@@ -1,10 +1,7 @@
 name: Render
 
-# The production line. main holds only the template + reference; every video is a PR.
-#   pull_request touching projects/<name>/ -> PREVIEW render + full gate (fast feedback on the PR)
-#   push to main (= merged PR)            -> FINAL render (S=2) + full gate of every changed project
-#   workflow_dispatch                     -> any project, preview or final, on any branch
-# The MP4 artifact is uploaded only when the gate passes.
+# Manual only: Actions -> Render -> Run workflow. Pick the branch (your PR branch for a preview, main for the final),
+# type the project folder, tick preview for a fast S=1 pass. The MP4 is uploaded only when the gate passes.
 on:
   workflow_dispatch:
     inputs:
@@ -15,56 +12,21 @@ on:
       preview:
         description: 'Fast preview (S=1). Untick for the final supersampled render'
         type: boolean
-        default: false
+        default: true
       strict:
         description: 'Treat WARN as failure'
         type: boolean
         default: false
-  pull_request:
-    paths:
-      - 'projects/**'
-  push:
-    branches: [main]
-    paths:
-      - 'projects/**'
 
 permissions:
   contents: read
 
 concurrency:
-  group: render-${{ github.event.pull_request.number || github.ref }}
+  group: render-${{ github.ref }}-${{ inputs.project }}
   cancel-in-progress: true
 
 jobs:
-  plan:
-    runs-on: ubuntu-latest
-    outputs:
-      projects: ${{ steps.pick.outputs.projects }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - id: pick
-        shell: bash
-        run: |
-          case "${{ github.event_name }}" in
-            workflow_dispatch) P='["${{ inputs.project }}"]' ;;
-            pull_request) RANGE="origin/${{ github.base_ref }}...HEAD" ;;
-            push) RANGE="${{ github.event.before }}..${{ github.sha }}" ;;
-          esac
-          if [ -z "${P:-}" ]; then
-            P=$(git diff --name-only $RANGE -- projects/ | cut -d/ -f2 | sort -u | while read n; do [ -f "projects/$n/render.py" ] && echo "$n"; done | jq -R . | jq -sc .)
-          fi
-          echo "projects=${P:-[]}" >> "$GITHUB_OUTPUT"
-          echo "Rendering: $P"
-
   render:
-    needs: plan
-    if: needs.plan.outputs.projects != '[]'
-    strategy:
-      fail-fast: false
-      matrix:
-        project: ${{ fromJson(needs.plan.outputs.projects) }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -76,15 +38,15 @@ jobs:
         shell: bash
         run: |
           ARGS=""
-          if [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ inputs.preview }}" = "true" ]; then ARGS="$ARGS --preview"; fi
+          if [ "${{ inputs.preview }}" = "true" ]; then ARGS="$ARGS --preview"; fi
           if [ "${{ inputs.strict }}" = "true" ]; then ARGS="$ARGS --strict"; fi
           echo "Mode: ${ARGS:-final}"
-          python scripts/produce.py "${{ matrix.project }}" $ARGS --out out/render
+          python scripts/produce.py "${{ inputs.project }}" $ARGS --out out/render
       - name: "Upload video (gate passed)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.project }}-${{ github.run_number }}
+          name: ${{ inputs.project }}-${{ github.run_number }}
           path: |
             out/render/*.mp4
             out/render/*_contact.png
@@ -100,7 +62,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.project }}-${{ github.run_number }}-FAILED-qa
+          name: ${{ inputs.project }}-${{ github.run_number }}-FAILED-qa
           path: |
             out/render/gate_summary.md
             out/render/gate_report.json

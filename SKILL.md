@@ -1,10 +1,10 @@
 ---
 name: bke-kinetic-motion
-version: 2.3.0
-description: Plan, render and QA premium kinetic-typography / motion-graphics promos entirely in code (Python + NumPy + Pillow + FFmpeg) in the GitHub repo jan2xo/bke-kinetic-motion. Every video is a branch + pull request. GitHub Actions renders and gates it (preview on the PR, final on merge), never the agent's machine. Creative decisions are written down before any code (polarity, motion vocabulary, half-second beat sheet, ranked impacts, easing by role, accent budget, planned quiet). One manifest drives picture AND sound. A CPU 2.5D/3D card renderer is included (real camera and lens, perspective cards, DOF, fog, shadows). v2.2 adds a hard production GATE (scripts/gate.py) and produce.py, so the agent cannot ship a from-scratch sketch, skip events, or call a planning PASS "done". Use for product promos, launch ads, title sequences, logo reveals, kinetic text with exact timings.
+version: 2.4.0
+description: Plan, render and QA premium kinetic-typography / motion-graphics promos entirely in code (Python + NumPy + Pillow + FFmpeg) in the GitHub repo jan2xo/bke-kinetic-motion. Every video is a branch + pull request. GitHub Actions renders and gates it, never the agent's machine. All Actions runs are manual (workflow_dispatch): preview on the PR branch, final on main. Creative decisions are written down before any code (polarity, motion vocabulary, half-second beat sheet, ranked impacts, easing by role, accent budget, planned quiet). One manifest drives picture AND sound. A CPU 2.5D/3D card renderer is included (real camera and lens, perspective cards, DOF, fog, shadows). v2.2 adds a hard production GATE (scripts/gate.py) and produce.py, so the agent cannot ship a from-scratch sketch, skip events, or call a planning PASS "done". Use for product promos, launch ads, title sequences, logo reveals, kinetic text with exact timings.
 ---
 
-# bke-kinetic-motion v2.3
+# bke-kinetic-motion v2.4
 
 Effects are cheap. Judgement is what separates a premium piece from an animated slideshow. This skill makes
 you answer five questions in writing, check the answers mechanically, then check the *rendered* result. Since v2.2
@@ -38,7 +38,7 @@ a gate enforces every step, and **GitHub Actions does all rendering**.
 5. **Times come only from the manifest.** The gate warns on float literals equal to event times in comparisons/`prog()`.
 6. **No fix by loosening thresholds.** Fix the design (section 4), push, let CI re-run.
 7. **You do not render locally and you never push to `main`.** You have no reliable compute and no eyes on the MP4.
-   Work on a branch, open a PR, and let Actions render, measure and gate it. Read the gate summary and the QA artifacts, then iterate on the PR.
+   Work on a branch, open a PR, and dispatch Actions on purpose to render, measure and gate it. Read the gate summary and the QA artifacts, then iterate on the PR.
 
 ## 1a. Requirements
 On the runner: Python 3.11, `numpy`, `pillow`, `ffmpeg` (installed by the workflows from `requirements.txt`).
@@ -47,8 +47,8 @@ No GPU, no ML model, no paid API. About 0.5 s per 1080p frame at S=2, so 15 s at
 ## Layout
 ```
 .github/actions/setup      Python + cached static ffmpeg (no apt)
-.github/workflows/ci.yml     every push/PR: unit tests, plan checks, static gate on every renderer, 3D demo render + full gate
-.github/workflows/render.yml PR touching projects/ -> preview + gate; merge to main -> final + gate; or Run workflow
+.github/workflows/ci.yml     MANUAL (Run workflow): unit tests, plan checks, static gate on every renderer, 3D demo render + full gate
+.github/workflows/render.yml MANUAL (Run workflow): project + preview/final -> produce.py -> gate -> MP4 artifact
 projects/<name>/             ONE PRODUCTION = render.py + timeline.json (+ assets). Example: projects/render-dock-15s
 scripts/produce.py           manifest -> plan check -> static gate -> render -> lint3d -> music -> encode -> validate -> QA -> full gate
 scripts/gate.py              the production gate (static | full). Writes gate_report.json + gate_summary.md   (v2.2)
@@ -77,17 +77,21 @@ docs/                        CREATIVE_FRAMEWORK, TEMPORAL_QA, MANIFEST, 3D_DECIS
    `KIT = os.environ.get('BKE_KIT', os.path.join(HERE, '..', '..'))`. Assets live in the project folder.
 4. **Name every event in code.** Look up each event with `TLM.event('<id>')`, drive its visual from that time, and list it in
    `build_visual_log()`. If you can't implement an event, delete it from the manifest. Don't log it.
-5. **Open a PR** into `main` and fill in the PR template checklist. Two checks run on their own:
-   - **CI**: unit tests, the plan check and the static gate on every renderer, plus a 3D demo render (~3 min).
-   - **Render (preview)**: renders the projects your PR changed at S=1 and runs the full gate.
+5. **Open a PR** into `main` and fill in the PR template checklist. **Nothing runs on its own: every Actions run is
+   intentional.** Start each run yourself with `workflow_dispatch` on your PR branch
+   (`POST /repos/jan2xo/bke-kinetic-motion/actions/workflows/<file>/dispatches`, `ref=video/<name>`):
+   - **CI** (`ci.yml`): unit tests, the plan check and the static gate on every renderer, plus a 3D demo render (~3 min).
+   - **Render (preview)** (`render.yml`, `project=<name>`, `preview=true`): your project at S=1 plus the full gate.
    Both must be green. Read the job summary (the gate table) and download the `Render` artifact: `gate_summary.md`,
    `qa/motion_summary.txt`, `qa/sync_summary.txt`, `*_contact.png`, `qa/previews/`. Answer `qa/previews/index.md` per window.
-6. **Iterate on the same PR.** Fix by design (section 4), commit, push. The checks re-run on their own and cancel stale runs.
-7. **Ask the user to review the preview MP4.** Merge only with their yes. Merging to `main` triggers the **final**
-   render (S=2) of the changed project. The MP4 is uploaded **only when the gate passes**. A failed gate uploads QA files only.
-8. **Deliver** the final run's artifact link plus the gate summary. State plainly what the render verified (validate,
+   Link both run URLs in the PR.
+6. **Iterate on the same PR.** Fix by design (section 4), commit, push, then dispatch Render (preview) again.
+   Don't dispatch twice for one commit, and don't burn runs on commits that haven't changed the renderer or manifest.
+7. **Ask the user to review the preview MP4.** Merge only with their yes.
+8. **Final:** dispatch **Render** on `main` with `project=<name>` and `preview=false` (S=2). The MP4 is uploaded **only when
+   the gate passes**. A failed gate uploads QA files only.
+9. **Deliver** the final run's artifact link plus the gate summary. State plainly what the render verified (validate,
    motion, impact rank, sync VERIFIED rows) and what was only declared (swells reported "not measurable").
-9. To re-render without code changes: Actions -> Render -> Run workflow (`project`, `preview`, `strict`) on any branch.
 
 Local equivalent (for debugging only): `python3 scripts/produce.py <project> [--preview]`. The result is the same as CI.
 

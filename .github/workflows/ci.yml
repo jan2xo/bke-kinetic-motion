@@ -1,11 +1,8 @@
 name: CI
 
-# Every push and PR: unit tests, plan checks, static gate on every renderer,
-# then a real render of the 3D demo and the full gate. Red = not done.
+# Manual only. Actions -> CI -> Run workflow (pick the branch).
+# Unit tests, plan checks, static gate on every renderer, then a real 3D demo render + full gate.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 
 permissions:

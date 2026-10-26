@@ -9,9 +9,18 @@ class TestSkillContract(unittest.TestCase):
         self.s = open(os.path.join(ROOT, 'SKILL.md'), encoding='utf-8').read()
 
     def test_points_to_pr_and_actions(self):
-        for needle in ('pull request', 'Never push to `main`', 'Never render on your own machine', 'gate.py', 'Render (preview)',
+        for needle in ('pull request', 'Never push to `main`', 'Never render on your own machine', 'gate.py', 'Render (preview)', 'workflow_dispatch',
                        'final'):
             self.assertIn(needle, self.s, needle)
+
+    def test_actions_are_manual_only(self):
+        import re
+        for f in ('ci.yml', 'render.yml'):
+            src = open(os.path.join(ROOT, '.github', 'workflows', f)).read()
+            on = src[src.index('\non:'):src.index('\npermissions:')]
+            self.assertIn('workflow_dispatch', on, f)
+            for trig in ('push', 'pull_request', 'schedule', 'workflow_run'):
+                self.assertIsNone(re.search(r'^\s+' + trig + r':', on, re.M), f'{f}: automatic trigger {trig}')
 
     def test_versions_agree(self):
         v = open(os.path.join(ROOT, 'VERSION')).read().strip()
