@@ -943,6 +943,7 @@
       "kind": "camera",
       "visual": "Travel through the final workflow step to broadcasting output",
       "audio": "whoosh",
+      "audio_offset": -0.16,
       "gain": 0.012,
       "sync": "required",
       "duration": 0.25,
