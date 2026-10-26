@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.3.0 · 2026-10-26
+The pull-request production line. `main` is the template and reference; every video is a PR.
+
+- `render.yml`: a PR touching `projects/<name>/` renders a **preview** and runs the full gate. A merge to `main` renders the
+  **final** (S=2). Manual Run workflow still works on any branch. Stale runs on the same PR are cancelled.
+- `.github/actions/setup`: Python plus a cached static ffmpeg (BtbN build) instead of `apt-get`, which hung for more than 11 minutes on a runner.
+  Each setup step has a 6-minute timeout.
+- `SKILL.md`: the workflow is branch, then PR, then green CI + Render (preview), then user review, then merge (final). Agents never push to `main` or render locally.
+- `.github/pull_request_template.md`: the gate checklist. `tests/test_skill_contract.py` fails CI if SKILL.md stops pointing to PR + Actions.
+
 ## 2.2.0 · 2026-10-26
 The production gate and GitHub Actions production line. All rendering moves off the agent's machine.
 

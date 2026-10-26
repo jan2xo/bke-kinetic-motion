@@ -22,15 +22,9 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: pip
-          cache-dependency-path: requirements.txt
-      - name: Install
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          python -m pip install -r requirements.txt
+      - name: Setup (Python + cached static ffmpeg)
+        uses: ./.github/actions/setup
+        timeout-minutes: 6
       - name: Unit tests
         run: python -m unittest discover -s tests -v
       - name: Plan check + static gate (every manifest and renderer)
@@ -51,15 +45,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: pip
-          cache-dependency-path: requirements.txt
-      - name: Install
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          python -m pip install -r requirements.txt
+      - name: Setup (Python + cached static ffmpeg)
+        uses: ./.github/actions/setup
+        timeout-minutes: 6
       - name: Produce (preview) and gate
         run: python scripts/produce.py 3d-demo --preview
       - uses: actions/upload-artifact@v4
