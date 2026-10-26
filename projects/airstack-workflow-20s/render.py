@@ -64,7 +64,7 @@ TIMES={k:TLM.event(k).t for k in KEYS}
 MOVES=[TLM.event(k) for k in ('cam_dolly','cam_track','cam_push','cam_flow','cam_arc','cam_output')]
 ARCS=[
  G.CameraRig('dolly',TIMES['cam_dolly'],2.0,lens_mm=LENS,ease='eio',
-             **{'from':(0,0,1400),'to':(0,0,2600)}),
+             **{'from':(0,0,900),'to':(0,0,2600)}),
  G.CameraRig('dolly',TIMES['cam_track'],4.0,lens_mm=LENS,ease='eio',
              **{'from':(0,0,2600),'to':(-380,0,2600)}),
  G.CameraRig('dolly',TIMES['cam_push'],6.95,lens_mm=LENS,ease='eio',
@@ -103,12 +103,12 @@ def make_panel(header,detail,index,large=False):
     d=ImageDraw.Draw(tex)
     d.rounded_rectangle((M.P(2),M.P(2),M.P(w-2),M.P(h-2)),
                         radius=M.P(20 if large else 14),
-                        fill=(20,34,52,255),outline=CYAN+(108 if index%3==0 else 38,),
+                        fill=(29,49,69,255),outline=CYAN+(108 if index%3==0 else 38,),
                         width=M.P(2))
     # Graphite material, sparse rules and status blocks. Designed broadcast
     # preparation fields, never a generic dashboard screenshot.
     d.rounded_rectangle((M.P(18),M.P(18),M.P(w-18),M.P(53 if not large else 95)),
-                        radius=M.P(8),fill=(30,47,65,255))
+                        radius=M.P(8),fill=(40,64,86,255))
     d.ellipse((M.P(w-48),M.P(28),M.P(w-34),M.P(42)),
               fill=CYAN+(240,))
     line_y=112 if not large else 205
@@ -118,8 +118,8 @@ def make_panel(header,detail,index,large=False):
                             radius=M.P(3),fill=(33+j*2,56+j*3,73+j*2,255))
         d.rounded_rectangle((M.P(28),M.P(yy),M.P(130 if not large else 270),M.P(yy+18 if not large else yy+50)),
                             radius=M.P(3),fill=(48,97,113,200))
-    title=M.Text(header,'Bold',30 if not large else 57,ICE,tracking=1)
-    subtitle=M.Text(detail,'Medium',20 if not large else 32,CYAN,tracking=0)
+    title=M.Text(header,'Bold',36 if not large else 57,ICE,tracking=1)
+    subtitle=M.Text(detail,'Medium',22 if not large else 32,CYAN,tracking=0)
     M.comp(tex,title.img,M.P(32),M.P(24 if not large else 35))
     M.comp(tex,subtitle.img,M.P(32),M.P(73 if not large else 123))
     return tex
@@ -129,9 +129,9 @@ def assets():
     if TEX_OLD is not None:return
     TEX_OLD=[make_panel(LABELS[i],OLD[i],i) for i in range(6)]
     TEX_NEW=[make_panel(LABELS[i],NEW[i],i) for i in range(6)]
-    CARDS_OLD=[G.Card(tex,(440,258),name=f'workflow_old_{i}') for i,tex in enumerate(TEX_OLD)]
-    CARDS_NEW=[G.Card(tex,(440,258),name=f'workflow_new_{i}') for i,tex in enumerate(TEX_NEW)]
-    GRID=G.card_wall(6,3,(515,310),(0,0,0))
+    CARDS_OLD=[G.Card(tex,(610,350),name=f'workflow_old_{i}') for i,tex in enumerate(TEX_OLD)]
+    CARDS_NEW=[G.Card(tex,(610,350),name=f'workflow_new_{i}') for i,tex in enumerate(TEX_NEW)]
+    GRID=G.card_wall(6,3,(730,420),(0,0,0))
     # The same task exists in multiple disconnected broadcast preparations.
     # One founding schedule is near the lens, other copies recede through space.
     rng=np.random.default_rng(1206)
@@ -289,9 +289,9 @@ def links(base,t,cam):
 def spatial(t):
     assets()
     cam=camera_at(t)
-    base=M.canvas(bg=M.radial_bg(inner=(12,31,50),outer=(3,8,19),cy=.48))
+    base=M.canvas(bg=M.radial_bg(inner=(20,43,66),outer=(4,11,23),cy=.48))
     if t<TIMES['recede']:
-        base.alpha_composite(M.grid(alpha=.025,step=120))
+        base.alpha_composite(M.grid(alpha=.032,step=160))
     cards=cluster(t)+type_states(t)+output_state(t)
     # The completed graph is one coherent room; depth pulls focus off
     # repeated work and toward a single output when automation activates.
@@ -299,7 +299,7 @@ def spatial(t):
     R=G.Renderer(cam,dof=dict(focus=focus,max_px=6,bands=4,aperture=.6),
                  fog=dict(near=1450,far=5900,max=.48,color=(6,17,29)),
                  light=dict(pos=(-1280,980,1050),color=CYAN,
-                            ambient=.9,key=.12,rim=.36),
+                            ambient=.98,key=.20,rim=.42),
                  shadow=dict(ground_y=-620,dir=(.25,-1,-.2),strength=.20,blur=9))
     R.render(base,cards,floor=None)
     links(base,t,cam)
