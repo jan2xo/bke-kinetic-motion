@@ -1,4 +1,4 @@
-# BKE Kinetic Motion v2.3
+# BKE Kinetic Motion v2.4
 
 [![CI](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/ci.yml/badge.svg)](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/ci.yml)
 [![Render](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/render.yml/badge.svg)](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/render.yml)
@@ -6,15 +6,12 @@
 Premium motion graphics written in code (Python, NumPy, Pillow, FFmpeg), **rendered and graded on GitHub Actions**.
 A planning PASS is not a video: every build has to get through `scripts/gate.py` before an MP4 is published.
 
-## Make a video (PR flow)
-`main` holds only the kit, the templates and the reference production. Every video is a branch and a pull request.
+## Make a video (PR flow, manual Actions)
+Nothing runs automatically. Every Actions run is started on purpose from **Actions → Run workflow**.
 1. Branch `video/<name>`. Copy `projects/render-dock-15s/` (or a template) to `projects/<name>/`, then edit `render.py` and `timeline.json`.
-2. Open a PR. **CI** (tests + static gate + demo render) and **Render (preview)** (your project at S=1 + full gate) run on their own.
-3. Download the Render artifact: preview MP4, contact sheet, `gate_summary.md`, QA. Push fixes to the same PR.
-4. Merge when the preview is approved. The merge renders the **final** MP4 (S=2). It's uploaded only if the gate passes.
-
-Recommended: Settings → Branches → add a rule for `main` → require a pull request and require the status checks
-**Tests + static gate** and **Render 3D demo + full gate** to pass.
+2. Open a PR. On your branch, run **CI** (tests, static gate, demo render) and **Render** with `preview` ticked.
+3. Download the Render artifact: preview MP4, contact sheet, `gate_summary.md`, QA. Push fixes, then run Render again.
+4. Merge when the preview is approved. Run **Render** on `main` with `preview` unticked for the final MP4. It's uploaded only if the gate passes.
 
 Reference production: `projects/render-dock-15s` (15 s, 1080×1920, music only).
 

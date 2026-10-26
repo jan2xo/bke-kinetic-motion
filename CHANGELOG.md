@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.0 · 2026-10-26
+Actions are intentional. No workflow runs on push, PR or merge any more.
+- `ci.yml` and `render.yml` are `workflow_dispatch` only. Render takes `project`, `preview` (default on) and `strict`.
+- `SKILL.md`: open the PR, then dispatch CI and Render (preview) on the PR branch. After the user approves, merge, then dispatch Render on `main` with `preview=false` for the final.
+- `tests/test_skill_contract.py`: fails if any workflow gains an automatic trigger.
+
 ## 2.3.0 · 2026-10-26
 The pull-request production line. `main` is the template and reference; every video is a PR.
 
