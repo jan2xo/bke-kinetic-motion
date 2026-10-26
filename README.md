@@ -1,4 +1,4 @@
-# BKE Kinetic Motion v2.2
+# BKE Kinetic Motion v2.3
 
 [![CI](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/ci.yml/badge.svg)](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/ci.yml)
 [![Render](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/render.yml/badge.svg)](https://github.com/jan2xo/bke-kinetic-motion/actions/workflows/render.yml)
@@ -6,14 +6,15 @@
 Premium motion graphics written in code (Python, NumPy, Pillow, FFmpeg), **rendered and graded on GitHub Actions**.
 A planning PASS is not a video: every build has to get through `scripts/gate.py` before an MP4 is published.
 
-## Make a video
-1. Create `projects/<name>/` with `render.py` (copied from `templates/promo_3d_template.py`) and `timeline.json`.
-   Add `"canvas": {"w": 1080, "h": 1920}` for vertical.
-2. Push a branch. **CI** runs the tests, the plan check and the static gate.
-3. Open **Actions → Render → Run workflow**, enter the project name, and tick `preview` for a fast pass.
-4. Download the artifact. If the gate passed it holds `<name>.mp4`, the contact sheet, `gate_summary.md` and the QA files.
-   If the gate failed you get only the QA files, so you can see why.
-5. Merge to `main` to render every changed project at full quality.
+## Make a video (PR flow)
+`main` holds only the kit, the templates and the reference production. Every video is a branch and a pull request.
+1. Branch `video/<name>`. Copy `projects/render-dock-15s/` (or a template) to `projects/<name>/`, then edit `render.py` and `timeline.json`.
+2. Open a PR. **CI** (tests + static gate + demo render) and **Render (preview)** (your project at S=1 + full gate) run on their own.
+3. Download the Render artifact: preview MP4, contact sheet, `gate_summary.md`, QA. Push fixes to the same PR.
+4. Merge when the preview is approved. The merge renders the **final** MP4 (S=2). It's uploaded only if the gate passes.
+
+Recommended: Settings → Branches → add a rule for `main` → require a pull request and require the status checks
+**Tests + static gate** and **Render 3D demo + full gate** to pass.
 
 Reference production: `projects/render-dock-15s` (15 s, 1080×1920, music only).
 

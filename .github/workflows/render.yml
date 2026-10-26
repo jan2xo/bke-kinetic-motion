@@ -1,7 +1,10 @@
 name: Render
 
-# The production line. Actions -> Render -> Run workflow, type the project folder name.
-# Also renders any project whose files changed on main. The MP4 ships only if the gate passes.
+# The production line. main holds only the template + reference; every video is a PR.
+#   pull_request touching projects/<name>/ -> PREVIEW render + full gate (fast feedback on the PR)
+#   push to main (= merged PR)            -> FINAL render (S=2) + full gate of every changed project
+#   workflow_dispatch                     -> any project, preview or final, on any branch
+# The MP4 artifact is uploaded only when the gate passes.
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +20,9 @@ on:
         description: 'Treat WARN as failure'
         type: boolean
         default: false
+  pull_request:
+    paths:
+      - 'projects/**'
   push:
     branches: [main]
     paths:
@@ -24,6 +30,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: render-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   plan:
@@ -33,14 +43,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - id: pick
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            P='["${{ inputs.project }}"]'
-          else
-            P=$(git diff --name-only HEAD~1 HEAD -- projects/ | cut -d/ -f2 | sort -u | while read n; do [ -f "projects/$n/render.py" ] && echo "$n"; done | jq -R . | jq -sc .)
+          case "${{ github.event_name }}" in
+            workflow_dispatch) P='["${{ inputs.project }}"]' ;;
+            pull_request) RANGE="origin/${{ github.base_ref }}...HEAD" ;;
+            push) RANGE="${{ github.event.before }}..${{ github.sha }}" ;;
+          esac
+          if [ -z "${P:-}" ]; then
+            P=$(git diff --name-only $RANGE -- projects/ | cut -d/ -f2 | sort -u | while read n; do [ -f "projects/$n/render.py" ] && echo "$n"; done | jq -R . | jq -sc .)
           fi
           echo "projects=${P:-[]}" >> "$GITHUB_OUTPUT"
           echo "Rendering: $P"
@@ -56,21 +69,16 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: pip
-          cache-dependency-path: requirements.txt
-      - name: Install
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          python -m pip install -r requirements.txt
+      - name: Setup (Python + cached static ffmpeg)
+        uses: ./.github/actions/setup
+        timeout-minutes: 6
       - name: Produce and gate
         shell: bash
         run: |
           ARGS=""
-          [ "${{ inputs.preview }}" = "true" ] && ARGS="$ARGS --preview"
-          [ "${{ inputs.strict }}" = "true" ] && ARGS="$ARGS --strict"
+          if [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ inputs.preview }}" = "true" ]; then ARGS="$ARGS --preview"; fi
+          if [ "${{ inputs.strict }}" = "true" ]; then ARGS="$ARGS --strict"; fi
+          echo "Mode: ${ARGS:-final}"
           python scripts/produce.py "${{ matrix.project }}" $ARGS --out out/render
       - name: "Upload video (gate passed)"
         if: success()
