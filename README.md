@@ -1,13 +1,19 @@
 # BKE Kinetic Motion
 
-Source-of-truth repository for the Hark v2.1.0 code-first motion production skill and GitHub Actions render worker.
+This repository is being bootstrapped from the original Hark v2.1.0 production skill.
 
-**Status:** bootstrap in progress. The complete original kit is distributed as `bke-kinetic-motion-v2.1.0.zip` and must be imported before the render workflow can succeed. This repository does not yet contain the full engine, templates, scripts, fonts, or tests.
+**Current status:** GitHub Actions render workflow is committed, but the original kit files have **not yet been imported into this repository**. The workflow requires `SKILL.md`, `scripts/`, `templates/`, `fonts/`, and related source files; it cannot produce video until those files are present.
 
-## Skill
-Install the full skill directory (including `SKILL.md`, `scripts/`, `templates/`, `fonts/`, and `docs/`) in an agent environment supporting custom skills. A GitHub README or `SKILL.md` by itself does not install a ChatGPT skill.
+## Import original kit
+
+Extract the repository-ready ZIP at the repository root and commit its contents (not the ZIP itself). Preserve the original `SKILL.md` and all source files. The complete package includes a `.github/workflows/render.yml` workflow.
 
 ## Render
-After the full kit is committed, open **Actions → Render Motion → Run workflow**. Choose `3d-demo` or `renderdock-v1`. The workflow renders on Ubuntu, generates original procedural audio, encodes MP4, runs video/temporal QA, and uploads artifacts.
 
-Do not confuse the demo workflow with a custom Render Dock 15-second production. Each new production requires its own project renderer and matching timeline.
+After importing the kit, open **Actions → Render Motion → Run workflow**. This initial workflow renders the 6-second 3D demonstration from `templates/promo_3d_template.py`, generates original audio, encodes MP4, runs QA, and uploads artifacts.
+
+This is **not** yet a custom Render Dock 15-second renderer. Add a project-specific renderer and timeline to produce that advertisement.
+
+## ChatGPT skill
+
+The original `SKILL.md` is available in the separate complete skill package. Uploading an MD file to a conversation supplies instructions for that conversation but does not permanently install a skill across all chats. Use a supported custom skill installation mechanism where available.
