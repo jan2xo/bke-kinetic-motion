@@ -166,19 +166,25 @@ def cluster(t):
     # First five seconds: work multiplicity increases and maintains its depth.
     # After connection, existing objects physically align into one workflow.
     out=[]
-    k=M.eio(M.prog(t,TIMES['snap']-.3,TIMES['snap']+.95))
-    fade=M.eio(M.prog(t,TIMES['cam_flow'],TIMES['cam_flow']+.6))
+    converge=M.eio(M.prog(t,TIMES['snap']-.20,TIMES['cam_flow']-.25))
     for i,s in enumerate(SCAT):
         emerge=M.eo(M.prog(t,s['delay']-.16,s['delay']+.55))
         drift=np.array((20*math.sin(t*1.3+i),12*math.sin(t*.8+i),0))
-        scattered=s['pos']+drift*(1-k)
+        if i==0 and t>=TIMES['one_panel']:drift*=0
+        scattered=s['pos']+drift*(1-converge)
+        # First all copies identify ONE source; next the six meaningful
+        # tasks enter the stable workflow in a rhythmic sequence.
+        spine=np.array((-180+i*60,40*math.sin(i),-290-i*18),float)
+        pre=scattered*(1-converge)+spine*converge
+        dock=M.eo(M.prog(t,TIMES['cam_flow']+i*.50,
+                         TIMES['cam_flow']+.60+i*.50)) if i<6 else 0.
         anchored=np.array(GRID[i%6]['pos'],float)
-        pos=scattered*(1-k)+anchored*k
-        rot=s['rot']*(1-k)
+        pos=pre*(1-dock)+anchored*dock
+        rot=s['rot']*(1-converge)*(1-dock)
         if i<6:
             alpha=emerge*(1-M.eio(M.prog(t,TIMES['refresh']-.2+i*.14,TIMES['refresh']+.32+i*.14)))
         else:
-            alpha=emerge*(1-k)*(1-fade*.4)
+            alpha=emerge*(1-converge)
         if alpha>.005:
             out.append(CARDS_OLD[i%6].with_xf(pos=pos,rot=rot,alpha=alpha))
         if i<6 and t>=TIMES['snap']:
@@ -223,6 +229,22 @@ def output_state(t):
 def links(base,t,cam):
     if t<TIMES['snap'] or t>=TIMES['recede']:return
     d=ImageDraw.Draw(base,'RGBA')
+    if t<TIMES['cam_flow']:
+        # The first connection is NOT a completed workflow: perspective
+        # lines propagate outward as separate sources begin converging.
+        anchor=np.array((0.,0.,120.),float)
+        for i in range(1,10):
+            a=SCAT[i]['pos']
+            xy,z=cam.project(np.vstack((anchor,a)))
+            if min(z)<100:continue
+            u=M.eio(M.prog(t,TIMES['snap']+(i-1)*.08,
+                           TIMES['snap']+.32+(i-1)*.08))
+            if u<=0:continue
+            start=xy[0];end=xy[0]+(xy[1]-xy[0])*u
+            d.line(tuple((M.P(v[0]),M.P(v[1])) for v in (start,end)),
+                   fill=CYAN+(int(115*(1-M.prog(t,TIMES['cam_flow']-.3,TIMES['cam_flow']))),),
+                   width=M.P(2))
+        return
     p=[np.array(GRID[i]['pos'],float) for i in range(6)]
     # Serpentine route follows the reusable data/action modules.
     for a,b in ((0,1),(1,2),(2,5),(5,4),(4,3)):
@@ -232,14 +254,14 @@ def links(base,t,cam):
         first=start+unit*250; last=end-unit*250
         xy,z=cam.project(np.vstack([first,last]))
         if min(z)<50:continue
-        enabled=M.eio(M.prog(t,TIMES['snap']+(a%3)*.18,TIMES['snap']+1.2+(a%3)*.18))
+        enabled=M.eio(M.prog(t,TIMES['cam_flow']+(a%3)*.48,TIMES['cam_flow']+1.25+(a%3)*.48))
         pulse=M.eio(M.prog(t,TIMES['automate']+(a%3)*.30,TIMES['automate']+.6+(a%3)*.3))
         alpha=.25*enabled+.68*pulse
         if alpha>.02:
             x1,y1=xy[0];x2,y2=xy[1]
             d.line([(M.P(x1),M.P(y1)),(M.P(x2),M.P(y2))],
                    fill=CYAN+(int(230*alpha),),width=M.P(4))
-            travel=M.prog(t,TIMES['snap'],TIMES['title'])
+            travel=M.prog(t,TIMES['automate'],TIMES['cam_output'])
             at=travel*5-(a%5)
             dot=M.clamp(at)
             if 0<dot<1:
