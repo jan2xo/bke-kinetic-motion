@@ -262,29 +262,73 @@ def links(base,t,cam):
                    width=M.P(2))
         return
     p=[np.array(GRID[i]['pos'],float) for i in range(6)]
-    # Serpentine route follows the reusable data/action modules.
-    for a,b in ((0,1),(1,2),(2,5),(5,4),(4,3)):
-        start,end=p[a],p[b]; v=end-start; dist=float(np.linalg.norm(v))
-        if dist<1:continue
-        unit=v/dist
-        first=start+unit*250; last=end-unit*250
-        xy,z=cam.project(np.vstack([first,last]))
-        if min(z)<50:continue
-        enabled=M.eio(M.prog(t,TIMES['cam_flow']+(a%3)*.48,TIMES['cam_flow']+1.25+(a%3)*.48))
-        pulse=M.eio(M.prog(t,TIMES['automate']+(a%3)*.30,TIMES['automate']+.6+(a%3)*.3))
-        alpha=.25*enabled+.68*pulse
-        if alpha>.02:
-            x1,y1=xy[0];x2,y2=xy[1]
-            d.line([(M.P(x1),M.P(y1)),(M.P(x2),M.P(y2))],
-                   fill=CYAN+(int(230*alpha),),width=M.P(4))
-            travel=M.prog(t,TIMES['automate'],TIMES['cam_output'])
-            at=travel*5-(a%5)
-            dot=M.clamp(at)
-            if 0<dot<1:
-                cx=M.lerp(x1,x2,dot);cy=M.lerp(y1,y2,dot)
-                r=M.P(7)
-                d.ellipse((M.P(cx)-r,M.P(cy)-r,M.P(cx)+r,M.P(cy)+r),
-                          fill=ICE+(230,))
+    route=(0,1,2,5,4,3)  # unchanged broadcast workflow structure
+    xy,z=cam.project(np.vstack(p))
+    if min(z)<50:return
+
+    # Persistent operational links. These do not redraw a new dashboard on
+    # refresh: new CONTENT traverses the same graph of pre-existing tasks.
+    edges=tuple(zip(route[:-1],route[1:]))
+    for j,(a,b) in enumerate(edges):
+        v=xy[b]-xy[a]
+        norm=float(np.linalg.norm(v))
+        if norm<.001:continue
+        v=v/norm
+        left=xy[a]+v*min(78.,norm*.22)
+        right=xy[b]-v*min(78.,norm*.22)
+        ready=M.eio(M.prog(t,TIMES['cam_flow']+j*.35,
+                                TIMES['cam_flow']+j*.35+.55))
+        if ready>.005:
+            d.line((M.P(left[0]),M.P(left[1]),M.P(right[0]),M.P(right[1])),
+                   fill=CYAN+(int(62*ready),),width=M.P(3))
+
+    # Semantic packet choreography:
+    # A single source activates the established structure (BUILD ONCE).
+    # New information then moves through every module (POPULATE).
+    # A distinct confirmed operation propagates in order (AUTOMATE).
+    # No decorative particles, random pulses, or new objects appearing out of thin air.
+    phases=(
+        ('structure',TIMES['workflow_lock'],TIMES['cam_arc'],.50),
+        ('refresh',TIMES['refresh'],TIMES['automate']-.08,.95),
+        ('operation',TIMES['automate'],TIMES['cam_output']-.10,1.0)
+    )
+    for role,t0,t1,power in phases:
+        if t<t0 or t>=t1:continue
+        along=M.eio(M.prog(t,t0,t1))*len(edges)
+        index=min(int(along),len(edges)-1)
+        fraction=M.clamp(along-index)
+        a,b=edges[index]
+        A,B=xy[a],xy[b]
+        point=A+(B-A)*fraction
+        direction=B-A
+        mag=float(np.linalg.norm(direction))
+        if mag<.001:continue
+        direction=direction/mag
+        # Motion streak is long enough to communicate travel even without
+        # typography or audio; the bright tip reaches each task in order.
+        tail=point-direction*(115 if role=='operation' else 88)
+        strength=(.40+.60*M.clamp(min(fraction,1.-fraction)*4))*power
+        d.line((M.P(tail[0]),M.P(tail[1]),M.P(point[0]),M.P(point[1])),
+               fill=CYAN+(int(45*strength),),width=M.P(28))
+        d.line((M.P(tail[0]),M.P(tail[1]),M.P(point[0]),M.P(point[1])),
+               fill=ICE+(int(220*strength),),width=M.P(5))
+        cx,cy=M.P(point[0]),M.P(point[1])
+        rr=M.P(27 if role=='operation' else 22)
+        d.ellipse((cx-rr,cy-rr,cx+rr,cy+rr),
+                  fill=CYAN+(int(70*strength),))
+        rcore=M.P(10)
+        d.ellipse((cx-rcore,cy-rcore,cx+rcore,cy+rcore),
+                  fill=ICE+(int(238*strength),))
+        # The touched module confirms and briefly lifts its border; unlike a
+        # dashboard indicator it is activated by the packet's arrival.
+        arrival=math.exp(-((fraction-.94)/.21)**2)*strength
+        px,py=xy[b]
+        width,height=M.P(90),M.P(58)
+        if arrival>.03:
+            d.rounded_rectangle((M.P(px)-width,M.P(py)-height,
+                                 M.P(px)+width,M.P(py)+height),
+                                radius=M.P(10),
+                                outline=CYAN+(int(195*arrival),),width=M.P(5))
 
 def spatial(t):
     assets()
