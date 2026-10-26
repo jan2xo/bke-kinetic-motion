@@ -1,0 +1,44 @@
+[
+ {
+  "event_id": "cam_dolly",
+  "t": 0.05,
+  "scene": "scatter",
+  "renderer": "RIG dolly"
+ },
+ {
+  "event_id": "headline",
+  "t": 0.4,
+  "scene": "scatter",
+  "renderer": "headline_state"
+ },
+ {
+  "event_id": "snap",
+  "t": 2.5,
+  "scene": "align",
+  "renderer": "card_states snap"
+ },
+ {
+  "event_id": "rim_sweep",
+  "t": 3.0,
+  "scene": "align",
+  "renderer": "renderer light sweep"
+ },
+ {
+  "event_id": "recede",
+  "t": 3.88,
+  "scene": "align",
+  "renderer": "card_states recede"
+ },
+ {
+  "event_id": "title",
+  "t": 4.0,
+  "scene": "title",
+  "renderer": "frame flash+zoom"
+ },
+ {
+  "event_id": "title_text",
+  "t": 4.18,
+  "scene": "title",
+  "renderer": "title_layer"
+ }
+]

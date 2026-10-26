@@ -1,0 +1,530 @@
+{
+ "tool": "bke-kinetic-motion/sync_check",
+ "version": "2.0.0",
+ "result": "FAIL",
+ "declared": {
+  "checks": [
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "build_riser @ 0.05s <- 'riser' +0 ms",
+    "event": "build_riser"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "glitch_open @ 0.32s <- 'glitch' +0 ms",
+    "event": "glitch_open"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "glitch_1 @ 1.20s <- 'glitch' -27 ms",
+    "event": "glitch_1"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "late_riser @ 1.45s <- 'riser' +0 ms",
+    "event": "late_riser"
+   },
+   {
+    "level": "FAIL",
+    "code": "missing_sfx",
+    "message": "glitch_2 @ 1.62s expects 'glitch' at 1.620s; none scheduled (nearest glitch at 1.448s, -173 ms)",
+    "event": "glitch_2"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "reveal @ 2.00s <- 'impact' +0 ms",
+    "event": "reveal"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "whip @ 3.86s <- 'whoosh' +0 ms",
+    "event": "whip"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "card_pickup @ 4.45s <- 'glitch' +0 ms",
+    "event": "card_pickup"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "card_drop @ 5.05s <- 'glitch' +0 ms",
+    "event": "card_drop"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "row_2 @ 5.18s <- 'glitch' +0 ms",
+    "event": "row_2"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "row_3 @ 5.32s <- 'glitch' +0 ms",
+    "event": "row_3"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "row_4 @ 5.46s <- 'glitch' +0 ms",
+    "event": "row_4"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "zoom_through @ 6.36s <- 'whoosh' +0 ms",
+    "event": "zoom_through"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "control_cut @ 6.50s <- 'kick' +0 ms",
+    "event": "control_cut"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "hero_riser @ 7.60s <- 'riser' +0 ms",
+    "event": "hero_riser"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "hero @ 8.50s <- 'impact' +0 ms",
+    "event": "hero"
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.922s has no visual event in the manifest",
+    "t": 0.9219
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.977s has no visual event in the manifest",
+    "t": 0.977
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.532s has no visual event in the manifest",
+    "t": 0.5325
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.998s has no visual event in the manifest",
+    "t": 0.9982
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 1.448s has no visual event in the manifest",
+    "t": 1.4475
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.909s has no visual event in the manifest",
+    "t": 0.9093
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 1.876s has no visual event in the manifest",
+    "t": 1.876
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 0.586s has no visual event in the manifest",
+    "t": 0.5857
+   },
+   {
+    "level": "FAIL",
+    "code": "orphan_audio",
+    "message": "'glitch' at 1.137s has no visual event in the manifest",
+    "t": 1.1373
+   },
+   {
+    "level": "WARN",
+    "code": "overlap",
+    "message": "double trigger: 'glitch' 0.532s and 'glitch' 0.586s are 53 ms apart",
+    "t": 0.5325
+   },
+   {
+    "level": "WARN",
+    "code": "overlap",
+    "message": "double trigger: 'glitch' 0.909s and 'glitch' 0.922s are 13 ms apart",
+    "t": 0.9093
+   },
+   {
+    "level": "WARN",
+    "code": "overlap",
+    "message": "double trigger: 'glitch' 0.922s and 'glitch' 0.977s are 55 ms apart",
+    "t": 0.9219
+   },
+   {
+    "level": "WARN",
+    "code": "overlap",
+    "message": "double trigger: 'glitch' 0.977s and 'glitch' 0.998s are 21 ms apart",
+    "t": 0.977
+   },
+   {
+    "level": "WARN",
+    "code": "overlap",
+    "message": "double trigger: 'glitch' 1.137s and 'glitch' 1.173s are 36 ms apart",
+    "t": 1.1373
+   }
+  ],
+  "matches": [
+   {
+    "event": "build_riser",
+    "t": 0.05,
+    "expected": 0.05,
+    "scheduled": 0.05,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "glitch_open",
+    "t": 0.32,
+    "expected": 0.32,
+    "scheduled": 0.32,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "glitch_1",
+    "t": 1.2,
+    "expected": 1.2,
+    "scheduled": 1.173,
+    "offset_ms": -27.0
+   },
+   {
+    "event": "late_riser",
+    "t": 1.45,
+    "expected": 1.45,
+    "scheduled": 1.45,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "reveal",
+    "t": 2.0,
+    "expected": 2.0,
+    "scheduled": 2.0,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "whip",
+    "t": 3.86,
+    "expected": 3.75,
+    "scheduled": 3.75,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "card_pickup",
+    "t": 4.45,
+    "expected": 4.45,
+    "scheduled": 4.45,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "card_drop",
+    "t": 5.05,
+    "expected": 5.05,
+    "scheduled": 5.05,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "row_2",
+    "t": 5.18,
+    "expected": 5.18,
+    "scheduled": 5.18,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "row_3",
+    "t": 5.32,
+    "expected": 5.32,
+    "scheduled": 5.32,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "row_4",
+    "t": 5.46,
+    "expected": 5.46,
+    "scheduled": 5.46,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "zoom_through",
+    "t": 6.36,
+    "expected": 6.2,
+    "scheduled": 6.2,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "control_cut",
+    "t": 6.5,
+    "expected": 6.5,
+    "scheduled": 6.5,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "hero_riser",
+    "t": 7.6,
+    "expected": 7.6,
+    "scheduled": 7.6,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "hero",
+    "t": 8.5,
+    "expected": 8.5,
+    "scheduled": 8.5,
+    "offset_ms": 0.0
+   }
+  ]
+ },
+ "verified": {
+  "checks": [
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "glitch_open: sound +16 ms vs picture (expected +0)",
+    "event": "glitch_open"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "glitch_1 @ 1.20s: audio onset not distinct (salience 1.3); visual change not distinct (salience 1.7)",
+    "event": "glitch_1"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "glitch_2 @ 1.62s: audio onset not distinct (salience 1.7); visual change not distinct (salience 1.8)",
+    "event": "glitch_2"
+   },
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "reveal: sound -8 ms vs picture (expected +0)",
+    "event": "reveal"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "whip @ 3.86s: 'whoosh' is a swell, so its timing can't be measured from onsets",
+    "event": "whip"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "card_pickup @ 4.45s: visual change not distinct (salience 0.8)",
+    "event": "card_pickup"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "card_drop @ 5.05s: visual change not distinct (salience 1.3)",
+    "event": "card_drop"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "row_2 @ 5.18s: visual change not distinct (salience 1.4)",
+    "event": "row_2"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "row_3 @ 5.32s: visual change not distinct (salience 1.7)",
+    "event": "row_3"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "row_4 @ 5.46s: visual change not distinct (salience 2.4)",
+    "event": "row_4"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "zoom_through @ 6.36s: 'whoosh' is a swell, so its timing can't be measured from onsets",
+    "event": "zoom_through"
+   },
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "control_cut: sound -4 ms vs picture (expected +0)",
+    "event": "control_cut"
+   },
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "hero: sound -8 ms vs picture (expected +0)",
+    "event": "hero"
+   }
+  ],
+  "events": [
+   {
+    "event": "glitch_open",
+    "t": 0.32,
+    "kind": "accent",
+    "expected_audio": 0.32,
+    "audio_onset": 0.316,
+    "audio_salience": 7.02,
+    "visual_peak": 0.3,
+    "visual_salience": 8.9,
+    "av_offset_ms": 16.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   },
+   {
+    "event": "glitch_1",
+    "t": 1.2,
+    "kind": "accent",
+    "expected_audio": 1.2,
+    "audio_onset": 1.132,
+    "audio_salience": 1.32,
+    "visual_peak": 1.233,
+    "visual_salience": 1.66,
+    "status": "not_measurable"
+   },
+   {
+    "event": "glitch_2",
+    "t": 1.62,
+    "kind": "accent",
+    "expected_audio": 1.62,
+    "audio_onset": 1.644,
+    "audio_salience": 1.69,
+    "visual_peak": 1.633,
+    "visual_salience": 1.8,
+    "status": "not_measurable"
+   },
+   {
+    "event": "reveal",
+    "t": 2.0,
+    "kind": "impact",
+    "expected_audio": 2.0,
+    "audio_onset": 1.992,
+    "audio_salience": 3.51,
+    "visual_peak": 2.0,
+    "visual_salience": 42.42,
+    "av_offset_ms": -8.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   },
+   {
+    "event": "whip",
+    "t": 3.86,
+    "kind": "transition",
+    "expected_audio": 3.75,
+    "audio_note": "'whoosh' is a swell; onset timing is not meaningful",
+    "visual_peak": 3.967,
+    "visual_salience": 13.86,
+    "status": "not_measurable"
+   },
+   {
+    "event": "card_pickup",
+    "t": 4.45,
+    "kind": "accent",
+    "expected_audio": 4.45,
+    "audio_onset": 4.492,
+    "audio_salience": 13.02,
+    "visual_peak": 4.567,
+    "visual_salience": 0.83,
+    "status": "not_measurable"
+   },
+   {
+    "event": "card_drop",
+    "t": 5.05,
+    "kind": "accent",
+    "expected_audio": 5.05,
+    "audio_onset": 4.992,
+    "audio_salience": 7.85,
+    "visual_peak": 5.067,
+    "visual_salience": 1.33,
+    "status": "not_measurable"
+   },
+   {
+    "event": "row_2",
+    "t": 5.18,
+    "kind": "accent",
+    "expected_audio": 5.18,
+    "audio_onset": 5.12,
+    "audio_salience": 5.27,
+    "visual_peak": 5.067,
+    "visual_salience": 1.36,
+    "status": "not_measurable"
+   },
+   {
+    "event": "row_3",
+    "t": 5.32,
+    "kind": "accent",
+    "expected_audio": 5.32,
+    "audio_onset": 5.368,
+    "audio_salience": 4.56,
+    "visual_peak": 5.367,
+    "visual_salience": 1.68,
+    "status": "not_measurable"
+   },
+   {
+    "event": "row_4",
+    "t": 5.46,
+    "kind": "accent",
+    "expected_audio": 5.46,
+    "audio_onset": 5.492,
+    "audio_salience": 11.36,
+    "visual_peak": 5.5,
+    "visual_salience": 2.38,
+    "status": "not_measurable"
+   },
+   {
+    "event": "zoom_through",
+    "t": 6.36,
+    "kind": "transition",
+    "expected_audio": 6.2,
+    "audio_note": "'whoosh' is a swell; onset timing is not meaningful",
+    "visual_peak": 6.467,
+    "visual_salience": 5.74,
+    "status": "not_measurable"
+   },
+   {
+    "event": "control_cut",
+    "t": 6.5,
+    "kind": "impact",
+    "expected_audio": 6.5,
+    "audio_onset": 6.496,
+    "audio_salience": 8.94,
+    "visual_peak": 6.5,
+    "visual_salience": 24.35,
+    "av_offset_ms": -4.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   },
+   {
+    "event": "hero",
+    "t": 8.5,
+    "kind": "impact",
+    "expected_audio": 8.5,
+    "audio_onset": 8.492,
+    "audio_salience": 4.66,
+    "visual_peak": 8.5,
+    "visual_salience": 46.74,
+    "av_offset_ms": -8.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   }
+  ]
+ },
+ "note": "DECLARED proves the manifest and the scheduled cues agree. VERIFIED measures the rendered file; \"not_measurable\" means the event did not stand out enough to time, which is not a pass."
+}

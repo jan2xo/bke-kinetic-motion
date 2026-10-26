@@ -1,93 +1,103 @@
-name: Render Motion
+name: Render
 
+# The production line. Actions -> Render -> Run workflow, type the project folder name.
+# Also renders any project whose files changed on main. The MP4 ships only if the gate passes.
 on:
   workflow_dispatch:
     inputs:
       project:
-        description: Production template
-        type: choice
+        description: 'Project folder under projects/ (or 3d-demo)'
         required: true
-        default: 3d-demo
-        options:
-          - 3d-demo
+        default: render-dock-15s
       preview:
-        description: Use low-resolution 3D preview (3d-demo only)
+        description: 'Fast preview (S=1). Untick for the final supersampled render'
         type: boolean
-        default: true
+        default: false
+      strict:
+        description: 'Treat WARN as failure'
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
-      - 'templates/**'
-      - 'scripts/**'
-      - 'fonts/**'
-      - '.github/workflows/render.yml'
+      - 'projects/**'
 
 permissions:
   contents: read
 
-concurrency:
-  group: render-${{ github.ref }}-${{ inputs.project || '3d-demo' }}
-  cancel-in-progress: true
-
 jobs:
-  render:
+  plan:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-    env:
-      PROJECT: ${{ inputs.project || '3d-demo' }}
-      PREVIEW: ${{ inputs.preview == true && '1' || '0' }}
+    outputs:
+      projects: ${{ steps.pick.outputs.projects }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - id: pick
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            P='["${{ inputs.project }}"]'
+          else
+            P=$(git diff --name-only HEAD~1 HEAD -- projects/ | cut -d/ -f2 | sort -u | while read n; do [ -f "projects/$n/render.py" ] && echo "$n"; done | jq -R . | jq -sc .)
+          fi
+          echo "projects=${P:-[]}" >> "$GITHUB_OUTPUT"
+          echo "Rendering: $P"
+
+  render:
+    needs: plan
+    if: needs.plan.outputs.projects != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.plan.outputs.projects) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install dependencies
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
-          python -m pip install numpy pillow
-      - name: Verify complete engine is present
-        run: |
-          test -f SKILL.md
-          test -f scripts/timeline.py
-          test -f scripts/music_synth.py
-          test -f scripts/sync_check.py
-          test -f templates/promo_3d_template.py
-          test -f fonts/Montserrat-Black.ttf
-      - name: Unit tests
-        run: python -m unittest discover -s tests -v
-      - name: Render, synthesize and encode
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python -m pip install -r requirements.txt
+      - name: Produce and gate
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p out
-          cd out
-          MANIFEST=../templates/timeline_3d.json
-          python ../scripts/timeline.py check "$MANIFEST"
-          if [ "$PREVIEW" = "1" ]; then
-            python ../templates/promo_3d_template.py render --preview
-          else
-            python ../templates/promo_3d_template.py render
-          fi
-          python ../templates/promo_3d_template.py lint | tee lint3d.txt
-          DURATION=6
-          python ../scripts/music_synth.py --manifest "$MANIFEST" --out music.wav --cue-log audio_cues.json
-          bash ../scripts/encode.sh frames music.wav promo.mp4 "$DURATION" 30
-          python ../scripts/validate.py promo.mp4 "$DURATION"
-          python ../scripts/motion_energy.py promo.mp4 --manifest "$MANIFEST" --out qa
-          python ../scripts/sync_check.py "$MANIFEST" --audio-log audio_cues.json --visual-log visual_log.json --video promo.mp4 --motion qa/motion_report.json --out qa
-          python ../scripts/preview.py promo.mp4 --manifest "$MANIFEST" --motion qa/motion_report.json --out qa/previews
-      - name: Upload production artifacts
-        if: always()
+          ARGS=""
+          [ "${{ inputs.preview }}" = "true" ] && ARGS="$ARGS --preview"
+          [ "${{ inputs.strict }}" = "true" ] && ARGS="$ARGS --strict"
+          python scripts/produce.py "${{ matrix.project }}" $ARGS --out out/render
+      - name: Upload video (gate passed)
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: bke-motion-${{ env.PROJECT }}-${{ github.run_number }}
+          name: ${{ matrix.project }}-${{ github.run_number }}
           path: |
-            out/promo.mp4
-            out/music.wav
-            out/audio_cues.json
-            out/visual_log.json
-            out/qa/
-            out/lint3d.txt
-          if-no-files-found: warn
+            out/render/*.mp4
+            out/render/*_contact.png
+            out/render/gate_summary.md
+            out/render/gate_report.json
+            out/render/qa/
+            out/render/visual_log.json
+            out/render/audio_cues.json
+            out/render/lint3d.txt
+            out/render/validate.txt
+          retention-days: 30
+      - name: Upload QA only (gate failed: no deliverable)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.project }}-${{ github.run_number }}-FAILED-qa
+          path: |
+            out/render/gate_summary.md
+            out/render/gate_report.json
+            out/render/qa/
+            out/render/*_contact.png
+            out/render/produce_log.json
+          if-no-files-found: ignore
           retention-days: 14

@@ -1,0 +1,10 @@
+LINT 3D  promo_3d_template
+PASS  camera: one move, 35-50 mm, eased in and out, no overshoot
+PASS  read @0.80s: headline tilt 0.0 deg (max 20)
+PASS  read @1.20s: headline tilt 0.0 deg (max 20)
+PASS  read @1.95s: headline tilt 0.0 deg (max 20)
+PASS  end state: max card tilt 0.00 deg (flat, frontal)
+PASS  end state: cards still after the title (max travel 0.000)
+PASS  end state: camera still in the final scene (travel 0.000)
+PASS  lens 40 mm = 33.4 deg vertical FOV
+RESULT: PASS

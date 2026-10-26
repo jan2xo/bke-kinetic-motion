@@ -1,0 +1,20 @@
+{
+ "result": "PASS",
+ "items": [
+  {
+   "level": "PASS",
+   "code": "polarity",
+   "message": "too many files -> one product in control"
+  },
+  {
+   "level": "PASS",
+   "code": "beats",
+   "message": "12 beats cover 6.0s at 0.5 s resolution"
+  },
+  {
+   "level": "PASS",
+   "code": "impacts",
+   "message": "ranked: 1:hero@4.0, 2:reveal@2.0"
+  }
+ ]
+}

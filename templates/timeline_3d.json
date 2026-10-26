@@ -1,0 +1,78 @@
+{
+  "schema": "bke-motion-timeline/1",
+  "title": "promo_3d_template - 6 s scattered in depth -> one flat grid -> title",
+  "duration": 6.0, "fps": 30, "bpm": 120, "tolerance_ms": 34,
+  "polarity": {"from": "work scattered in every direction and depth", "to": "one flat, ordered system",
+               "statement": "The product turns files scattered through space into one calm, ordered grid."},
+  "camera3d": {
+    "why_3d": "Space IS the message: depth = disorder (cards at every distance and angle), flatness = order (one plane, one angle). A 2D fake could show scatter, but not the moment depth collapses into a single plane.",
+    "lens_mm": 40, "lights": 1, "key_light": "gold rim from upper left + ambient", "max_text_tilt_deg": 20,
+    "dof": "focus on the headline while it is read, pulled to the grid plane for the snap",
+    "end_state": "flat, frontal, still from 4.0 s"
+  },
+  "vocabulary": {
+    "from": [
+      {"effect": "depth_scatter", "meaning": "files at every distance: too much, nowhere in particular"},
+      {"effect": "rotation_drift", "meaning": "nothing aligned, nothing at rest"},
+      {"effect": "dolly_through", "meaning": "we move into the mess; its depth shows how much there is"},
+      {"effect": "defocus_depth", "meaning": "most of it is out of focus: you can only read one thing at a time"}
+    ],
+    "to": [
+      {"effect": "flat_snap", "meaning": "depth collapses into one plane: order arrives at once"},
+      {"effect": "rim_sweep", "meaning": "the ordered system is lit and alive"},
+      {"effect": "recede", "meaning": "the system steps back so the name can lead"},
+      {"effect": "centre_out_reveal", "meaning": "symmetry = resolved"},
+      {"effect": "shine_sweep", "meaning": "premium finish"}
+    ],
+    "neutral": [
+      {"effect": "flash", "meaning": "impact weight by rank"},
+      {"effect": "focus_pull", "meaning": "attention moves to what should be read now"},
+      {"effect": "fog_depth", "meaning": "ambient depth: far things fade"},
+      {"effect": "floor_grid", "meaning": "a ground to stand on: makes the space legible"},
+      {"effect": "particles", "meaning": "ambient celebration"}
+    ]
+  },
+  "accent": {"color": "#FFC228", "budget_pct": 10, "reserved_for": ["key light rim", "headline punctuation", "rule", "brand"]},
+  "easing": {"arrive": "expo_out 0.45-0.6 s", "depart": "expo_in", "transform": "cubic_in_out (camera: slow in, slow out, no overshoot)",
+             "pop": "back_out", "pop_targets": "none in this piece", "mechanical": "linear (card drift, particles)"},
+  "stagger": {"chars_ms": 30, "items_ms": 0, "rule": "the 30 cards snap simultaneously: order arrives at once (used once)"},
+  "music": {"groove_from": 2.5, "hats_from": 3.0},
+  "scenes": [
+    {"id": "scatter", "start": 0.0, "end": 2.5, "text": "TOO MANY FILES?", "pole": "from", "energy": "high", "density": 31, "emotion": "overwhelm, depth"},
+    {"id": "align",   "start": 2.5, "end": 4.0, "text": "(grid)", "pole": "to", "energy": "medium", "density": 30, "emotion": "relief: one plane"},
+    {"id": "title",   "start": 4.0, "end": 6.0, "text": "YOUR PRODUCT / By YOUR BRAND", "pole": "to", "energy": "medium", "density": 3, "emotion": "payoff, then rest"}
+  ],
+  "beats": [
+    {"t": 0.0, "dominant": "30 cards burst out of the depth, tumbling", "supporting": "camera starts its slow dolly", "ambient": "card drift, fog, floor grid", "audio": "pad, riser starts", "effects": ["depth_scatter", "rotation_drift", "dolly_through", "fog_depth", "floor_grid"], "read_first": "depth"},
+    {"t": 0.5, "dominant": "headline card arrives frontal, in focus", "supporting": "cards tumble past", "ambient": "fog", "audio": "riser", "effects": ["rotation_drift", "defocus_depth"], "read_first": "TOO MANY FILES?"},
+    {"t": 1.0, "dominant": "cards tumble as the camera pushes in", "supporting": null, "ambient": "fog, floor grid", "audio": "riser", "effects": ["rotation_drift", "dolly_through"], "read_first": "TOO MANY FILES?"},
+    {"t": 1.5, "dominant": "near cards sweep past the lens", "supporting": null, "ambient": "fog", "audio": "riser", "effects": ["dolly_through", "defocus_depth"], "read_first": "headline"},
+    {"t": 2.0, "dominant": "headline departs expo-in, focus pulls to the grid plane", "supporting": null, "ambient": "card drift", "audio": "riser peaks", "effects": ["focus_pull", "rotation_drift"], "read_first": "focus moving"},
+    {"t": 2.5, "dominant": "every card snaps flat into one grid", "supporting": "flash", "ambient": "fog", "audio": "IMPACT", "effects": ["flat_snap", "flash"], "read_first": "grid"},
+    {"t": 3.0, "dominant": "gold key light sweeps across the grid", "supporting": null, "ambient": "grain", "audio": "groove, glint", "effects": ["rim_sweep"], "read_first": "grid"},
+    {"t": 3.5, "dominant": "grid recedes into depth, darkening", "supporting": null, "ambient": "fog", "audio": "whoosh", "effects": ["recede", "fog_depth"], "read_first": "grid"},
+    {"t": 4.0, "dominant": "flash, title reveals centre-out", "supporting": "gold glow", "ambient": "particles", "audio": "FINAL IMPACT", "effects": ["flash", "centre_out_reveal"], "read_first": "YOUR PRODUCT"},
+    {"t": 4.5, "dominant": "shine sweeps the title", "supporting": "rule + subtitle", "ambient": "particles", "audio": "chord", "effects": ["shine_sweep", "particles"], "read_first": "YOUR PRODUCT"},
+    {"t": 5.0, "dominant": "subtitle settles", "supporting": null, "ambient": "particles", "audio": "chord rings", "effects": ["particles"], "read_first": "By YOUR BRAND"},
+    {"t": 5.5, "dominant": "end card rest", "supporting": null, "ambient": "particles", "audio": "fade", "effects": ["particles"], "read_first": "brand"}
+  ],
+  "events": [
+    {"id": "cam_dolly", "t": 0.05, "kind": "camera", "visual": "camera dollies 3400 -> 1800 units along the axis, through the scattered cards", "audio": "riser", "sync": "required", "duration": 2.4,
+     "move3d": {"type": "dolly", "end": 2.9, "ease": "cubic_in_out", "rank": 3, "from": [0, 0, 3400], "to": [0, 0, 1800],
+                "meaning": "moving into the mess: its depth shows how much there is; settles frontal as order arrives"}},
+    {"id": "headline", "t": 0.40, "kind": "text", "visual": "TOO MANY FILES? card arrives frontal (expo-out), in the focus plane", "sync": "visual_only"},
+    {"id": "snap", "t": 2.50, "kind": "impact", "style": "cut_flash", "visual": "all 30 cards snap flat into a 6x5 grid (expo-out, peak on this frame) + 0.45 flash", "audio": "impact", "gain": 0.8, "rank": 2, "sync": "required",
+     "anticipation": "riser + headline exits expo-in + focus pull to the grid plane",
+     "move3d": {"type": "snap_align", "ease": "expo_out", "rank": 1, "meaning": "depth collapses into one plane: chaos becomes order at once"}},
+    {"id": "rim_sweep", "t": 3.00, "kind": "accent", "visual": "gold key light sweeps left to right across the grid (2.9-3.6 s)", "audio": "tick", "sync": "required", "duration": 0.7,
+     "move3d": {"type": "light_sweep", "ease": "cubic_in_out", "rank": 4, "meaning": "the ordered system is lit and alive"}},
+    {"id": "recede", "t": 3.88, "kind": "transition", "style": "zoom_out", "visual": "grid recedes 0 -> -900 units (expo-in) and darkens, flash ramp", "audio": "whoosh", "audio_offset": -0.16, "sync": "required", "duration": 0.3,
+     "move3d": {"type": "recede", "ease": "expo_in", "rank": 2, "meaning": "the system steps back so the name can lead"}},
+    {"id": "title", "t": 4.00, "kind": "impact", "style": "zoom", "visual": "flash 0.85, flat title zooms 1.18 -> 1, centre-out letters", "audio": "impact", "rank": 1, "sync": "required",
+     "anticipation": "grid recedes + whoosh"},
+    {"id": "title_text", "t": 4.18, "kind": "reveal", "visual": "title centre-out, shine 4.75-5.25", "sync": "visual_only"}
+  ],
+  "quiet": [{"start": 5.1, "end": 6.0, "reason": "end card rest: flat, frontal, still; let the brand read"}],
+  "audio_bed": ["kick", "hat", "clap", "pad", "pluck", "bass"],
+  "motion_qa": {"style": "kinetic"}
+}

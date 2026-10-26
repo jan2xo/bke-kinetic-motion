@@ -1,0 +1,84 @@
+test_classified_as_camera_only (test_mg3d.DollyIsCamera.test_classified_as_camera_only) ... ok
+test_residual_after_zoom_is_small (test_mg3d.DollyIsCamera.test_residual_after_zoom_is_small) ... ok
+test_zoom_is_measured_in_the_moving_middle (test_mg3d.DollyIsCamera.test_zoom_is_measured_in_the_moving_middle) ... ok
+test_design_distance_maps_one_unit_to_one_pixel (test_mg3d.Projection.test_design_distance_maps_one_unit_to_one_pixel) ... ok
+test_fov_scaling (test_mg3d.Projection.test_fov_scaling) ... ok
+test_lens_mm_equivalence (test_mg3d.Projection.test_lens_mm_equivalence) ... ok
+test_matrices_agree_with_project (test_mg3d.Projection.test_matrices_agree_with_project) ... ok
+test_perspective_warp_lands_on_projected_quad (test_mg3d.Projection.test_perspective_warp_lands_on_projected_quad) ... ok
+test_point_on_axis_lands_at_frame_centre (test_mg3d.Projection.test_point_on_axis_lands_at_frame_centre) ... ok
+test_culling (test_mg3d.RenderDecisions.test_culling) ... ok
+test_depth_sort_back_to_front (test_mg3d.RenderDecisions.test_depth_sort_back_to_front) ... ok
+test_dof_blur_rises_with_distance_from_focus (test_mg3d.RenderDecisions.test_dof_blur_rises_with_distance_from_focus) ... ok
+test_fog_and_rim_respond_to_depth_and_angle (test_mg3d.RenderDecisions.test_fog_and_rim_respond_to_depth_and_angle) ... ok
+test_3d_plan_check (test_mg3d.Rules.test_3d_plan_check) ... /workspace/work/bke/bke-kinetic-motion/tests/test_mg3d.py:151: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/work/bke/bke-kinetic-motion/tests/../templates/timeline_3d.json' mode='r' encoding='UTF-8'>
+  d = json.load(open(man))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_lint_rig (test_mg3d.Rules.test_lint_rig) ... ok
+test_template_logs_every_manifest_event (test_mg3d.Rules.test_template_logs_every_manifest_event) ... /workspace/work/bke/bke-kinetic-motion/tests/test_mg3d.py:164: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/mg3d_xy763rzj/visual_log.json' mode='r' encoding='UTF-8'>
+  logged = {v['event_id'] for v in json.load(open(os.path.join(TMP, 'visual_log.json')))}
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_text_tilt_rule (test_mg3d.Rules.test_text_tilt_rule) ... ok
+test_camera_pan_is_recognised_as_camera (test_motion_energy.MotionEnergy.test_camera_pan_is_recognised_as_camera) ... ok
+test_constant_motion_has_no_hold (test_motion_energy.MotionEnergy.test_constant_motion_has_no_hold) ... ok
+test_declared_quiet_is_not_a_failure (test_motion_energy.MotionEnergy.test_declared_quiet_is_not_a_failure) ... ok
+test_end_card_after_final_impact_is_intentional (test_motion_energy.MotionEnergy.test_end_card_after_final_impact_is_intentional) ... ok
+test_end_card_too_long_still_flagged (test_motion_energy.MotionEnergy.test_end_card_too_long_still_flagged) ... ok
+test_energy_order_and_sag (test_motion_energy.MotionEnergy.test_energy_order_and_sag) ... ok
+test_flash_detected_and_classified (test_motion_energy.MotionEnergy.test_flash_detected_and_classified) ... ok
+test_fps_and_resolution_normalisation (test_motion_energy.MotionEnergy.test_fps_and_resolution_normalisation) ... ok
+test_grain_does_not_hide_a_hold (test_motion_energy.MotionEnergy.test_grain_does_not_hide_a_hold) ... ok
+test_impact_missing_is_a_failure (test_motion_energy.MotionEnergy.test_impact_missing_is_a_failure) ... ok
+test_undeclared_still_fails (test_motion_energy.MotionEnergy.test_undeclared_still_fails) ... ok
+test_chaos_energy_sag (test_regression_renderdock.RenderDockV1.test_chaos_energy_sag) ... ok
+test_dead_hold_2_8_to_3_9 (test_regression_renderdock.RenderDockV1.test_dead_hold_2_8_to_3_9) ... ok
+test_end_card_is_not_a_false_failure (test_regression_renderdock.RenderDockV1.test_end_card_is_not_a_false_failure) ... ok
+test_full_resolution_agrees (test_regression_renderdock.RenderDockV1.test_full_resolution_agrees) ... skipped 'set RENDERDOCK_FULL to the original 1080p render'
+test_impacts_follow_narrative_rank (test_regression_renderdock.RenderDockV1.test_impacts_follow_narrative_rank) ... ok
+test_manifest_audio_is_deterministic_and_tagged (test_regression_renderdock.RenderDockV1.test_manifest_audio_is_deterministic_and_tagged) ... /workspace/work/bke/bke-kinetic-motion/tests/test_regression_renderdock.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp21chtfba/c0.json' mode='r' encoding='UTF-8'>
+  logs.append(json.load(open(f'{d}/c{k}.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/work/bke/bke-kinetic-motion/tests/test_regression_renderdock.py:64: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp21chtfba/c1.json' mode='r' encoding='UTF-8'>
+  logs.append(json.load(open(f'{d}/c{k}.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_random_glitch_sounds_are_caught (test_regression_renderdock.RenderDockV1.test_random_glitch_sounds_are_caught) ... /workspace/work/bke/bke-kinetic-motion/tests/test_regression_renderdock.py:46: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/work/bke/bke-kinetic-motion/tests/fixtures/renderdock_v1_audio_cues.json' mode='r' encoding='UTF-8'>
+  ch, _ = SC.declared(TL.load(MAN), json.load(open(CUES)))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_v2_manifest_audio_clears_the_sync_defect (test_regression_renderdock.RenderDockV1.test_v2_manifest_audio_clears_the_sync_defect) ... /workspace/work/bke/bke-kinetic-motion/tests/test_regression_renderdock.py:56: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpr_5nh1jj/c.json' mode='r' encoding='UTF-8'>
+  ch, _ = SC.declared(TL.load(MAN), json.load(open(f'{d}/c.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_density_must_fall (test_sync_check.Plan.test_density_must_fall) ... ok
+test_effect_without_meaning_fails (test_sync_check.Plan.test_effect_without_meaning_fails) ... ok
+test_missing_beat_slot_fails (test_sync_check.Plan.test_missing_beat_slot_fails) ... ok
+test_no_planned_quiet_warns (test_sync_check.Plan.test_no_planned_quiet_warns) ... ok
+test_payoff_should_be_rank_one (test_sync_check.Plan.test_payoff_should_be_rank_one) ... ok
+test_required_sync_needs_audio (test_sync_check.Plan.test_required_sync_needs_audio) ... ok
+test_template_plan_passes (test_sync_check.Plan.test_template_plan_passes) ... ok
+test_two_dominant_motions_fail (test_sync_check.Plan.test_two_dominant_motions_fail) ... ok
+test_audio_offset_is_honoured (test_sync_check.Sync.test_audio_offset_is_honoured) ... ok
+test_bed_cues_are_not_orphans (test_sync_check.Sync.test_bed_cues_are_not_orphans) ... ok
+test_clean_schedule_passes (test_sync_check.Sync.test_clean_schedule_passes) ... ok
+test_double_trigger_overlap (test_sync_check.Sync.test_double_trigger_overlap) ... ok
+test_drift_beyond_tolerance (test_sync_check.Sync.test_drift_beyond_tolerance) ... ok
+test_drift_trend (test_sync_check.Sync.test_drift_trend) ... ok
+test_event_id_matching_beats_nearest (test_sync_check.Sync.test_event_id_matching_beats_nearest) ... ok
+test_missing_sfx (test_sync_check.Sync.test_missing_sfx) ... ok
+test_orphan_audio (test_sync_check.Sync.test_orphan_audio) ... ok
+test_undeclared_visual_event (test_sync_check.Sync.test_undeclared_visual_event) ... ok
+test_unrendered_visual_event (test_sync_check.Sync.test_unrendered_visual_event) ... ok
+test_visual_only_must_stay_silent (test_sync_check.Sync.test_visual_only_must_stay_silent) ... ok
+test_within_tolerance_is_synced (test_sync_check.Sync.test_within_tolerance_is_synced) ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 45.799s
+
+OK (skipped=1)
+
+real	0m46.165s
+user	1m2.989s
+sys	0m2.451s

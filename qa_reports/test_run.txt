@@ -1,0 +1,45 @@
+test_camera_pan_is_recognised_as_camera (test_motion_energy.MotionEnergy.test_camera_pan_is_recognised_as_camera) ... ok
+test_constant_motion_has_no_hold (test_motion_energy.MotionEnergy.test_constant_motion_has_no_hold) ... ok
+test_declared_quiet_is_not_a_failure (test_motion_energy.MotionEnergy.test_declared_quiet_is_not_a_failure) ... ok
+test_end_card_after_final_impact_is_intentional (test_motion_energy.MotionEnergy.test_end_card_after_final_impact_is_intentional) ... ok
+test_end_card_too_long_still_flagged (test_motion_energy.MotionEnergy.test_end_card_too_long_still_flagged) ... ok
+test_energy_order_and_sag (test_motion_energy.MotionEnergy.test_energy_order_and_sag) ... ok
+test_flash_detected_and_classified (test_motion_energy.MotionEnergy.test_flash_detected_and_classified) ... ok
+test_fps_and_resolution_normalisation (test_motion_energy.MotionEnergy.test_fps_and_resolution_normalisation) ... ok
+test_grain_does_not_hide_a_hold (test_motion_energy.MotionEnergy.test_grain_does_not_hide_a_hold) ... ok
+test_impact_missing_is_a_failure (test_motion_energy.MotionEnergy.test_impact_missing_is_a_failure) ... ok
+test_undeclared_still_fails (test_motion_energy.MotionEnergy.test_undeclared_still_fails) ... ok
+test_chaos_energy_sag (test_regression_renderdock.RenderDockV1.test_chaos_energy_sag) ... ok
+test_dead_hold_2_8_to_3_9 (test_regression_renderdock.RenderDockV1.test_dead_hold_2_8_to_3_9) ... ok
+test_end_card_is_not_a_false_failure (test_regression_renderdock.RenderDockV1.test_end_card_is_not_a_false_failure) ... ok
+test_full_resolution_agrees (test_regression_renderdock.RenderDockV1.test_full_resolution_agrees) ... ok
+test_impacts_follow_narrative_rank (test_regression_renderdock.RenderDockV1.test_impacts_follow_narrative_rank) ... ok
+test_manifest_audio_is_deterministic_and_tagged (test_regression_renderdock.RenderDockV1.test_manifest_audio_is_deterministic_and_tagged) ... ok
+test_random_glitch_sounds_are_caught (test_regression_renderdock.RenderDockV1.test_random_glitch_sounds_are_caught) ... ok
+test_v2_manifest_audio_clears_the_sync_defect (test_regression_renderdock.RenderDockV1.test_v2_manifest_audio_clears_the_sync_defect) ... ok
+test_density_must_fall (test_sync_check.Plan.test_density_must_fall) ... ok
+test_effect_without_meaning_fails (test_sync_check.Plan.test_effect_without_meaning_fails) ... ok
+test_missing_beat_slot_fails (test_sync_check.Plan.test_missing_beat_slot_fails) ... ok
+test_no_planned_quiet_warns (test_sync_check.Plan.test_no_planned_quiet_warns) ... ok
+test_payoff_should_be_rank_one (test_sync_check.Plan.test_payoff_should_be_rank_one) ... ok
+test_required_sync_needs_audio (test_sync_check.Plan.test_required_sync_needs_audio) ... ok
+test_template_plan_passes (test_sync_check.Plan.test_template_plan_passes) ... ok
+test_two_dominant_motions_fail (test_sync_check.Plan.test_two_dominant_motions_fail) ... ok
+test_audio_offset_is_honoured (test_sync_check.Sync.test_audio_offset_is_honoured) ... ok
+test_bed_cues_are_not_orphans (test_sync_check.Sync.test_bed_cues_are_not_orphans) ... ok
+test_clean_schedule_passes (test_sync_check.Sync.test_clean_schedule_passes) ... ok
+test_double_trigger_overlap (test_sync_check.Sync.test_double_trigger_overlap) ... ok
+test_drift_beyond_tolerance (test_sync_check.Sync.test_drift_beyond_tolerance) ... ok
+test_drift_trend (test_sync_check.Sync.test_drift_trend) ... ok
+test_event_id_matching_beats_nearest (test_sync_check.Sync.test_event_id_matching_beats_nearest) ... ok
+test_missing_sfx (test_sync_check.Sync.test_missing_sfx) ... ok
+test_orphan_audio (test_sync_check.Sync.test_orphan_audio) ... ok
+test_undeclared_visual_event (test_sync_check.Sync.test_undeclared_visual_event) ... ok
+test_unrendered_visual_event (test_sync_check.Sync.test_unrendered_visual_event) ... ok
+test_visual_only_must_stay_silent (test_sync_check.Sync.test_visual_only_must_stay_silent) ... ok
+test_within_tolerance_is_synced (test_sync_check.Sync.test_within_tolerance_is_synced) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 30.431s
+
+OK

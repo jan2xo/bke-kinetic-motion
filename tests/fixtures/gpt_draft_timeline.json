@@ -1,0 +1,748 @@
+{
+  "schema": "bke-motion-timeline/1",
+  "title": "Render Dock \u2014 From Chaos to Control / 15s vertical",
+  "duration": 15.0,
+  "fps": 30,
+  "bpm": 120,
+  "tolerance_ms": 34,
+  "polarity": {
+    "from": "scattered, overwhelming media files",
+    "to": "a clear, controlled production workflow",
+    "statement": "Render Dock turns scattered, overwhelming media files into a clear, controlled production workflow."
+  },
+  "vocabulary": {
+    "from": [
+      {
+        "effect": "scatter",
+        "meaning": "disorder in space"
+      },
+      {
+        "effect": "rotation_drift",
+        "meaning": "uncontrolled orientation"
+      },
+      {
+        "effect": "tracking_collapse",
+        "meaning": "overload becoming readable"
+      },
+      {
+        "effect": "scatter_converge",
+        "meaning": "chaos reaching a decision"
+      }
+    ],
+    "to": [
+      {
+        "effect": "card_drop",
+        "meaning": "direct user control"
+      },
+      {
+        "effect": "mask_rise",
+        "meaning": "precise communication"
+      },
+      {
+        "effect": "grid_align",
+        "meaning": "organization"
+      },
+      {
+        "effect": "queue_stagger",
+        "meaning": "predictable processing order"
+      },
+      {
+        "effect": "grid_snap",
+        "meaning": "system establishes control"
+      },
+      {
+        "effect": "progress_fill",
+        "meaning": "visible work"
+      },
+      {
+        "effect": "output_handoff",
+        "meaning": "completed deliverable"
+      },
+      {
+        "effect": "centre_out_reveal",
+        "meaning": "resolved product identity"
+      },
+      {
+        "effect": "hero_settle",
+        "meaning": "confidence"
+      },
+      {
+        "effect": "end_hold",
+        "meaning": "allow brand to register"
+      }
+    ],
+    "neutral": [
+      {
+        "effect": "dolly_3d",
+        "meaning": "guide viewer through meaningful space"
+      },
+      {
+        "effect": "focus_pull",
+        "meaning": "select the next subject"
+      },
+      {
+        "effect": "tracking_dolly",
+        "meaning": "follow asset into workflow"
+      },
+      {
+        "effect": "flash",
+        "meaning": "ranked impact punctuation"
+      },
+      {
+        "effect": "line_draw",
+        "meaning": "workflow connection"
+      },
+      {
+        "effect": "grain",
+        "meaning": "subtle finishing"
+      },
+      {
+        "effect": "morph_to_brand",
+        "meaning": "product solution emerges from output"
+      },
+      {
+        "effect": "camera_settle",
+        "meaning": "reduce motion as control emerges"
+      },
+      {
+        "effect": "centre_pull",
+        "meaning": "prepare brand payoff"
+      },
+      {
+        "effect": "rotation_drift",
+        "meaning": "temporary instability"
+      }
+    ]
+  },
+  "accent": {
+    "color": "#FFC228",
+    "budget_pct": 10,
+    "reserved_for": [
+      "selected file",
+      "drop acceptance",
+      "queue progress",
+      "completed status",
+      "brand"
+    ]
+  },
+  "easing": {
+    "arrive": "expo_out 0.4-0.6 s",
+    "depart": "expo_in 0.12-0.25 s",
+    "transform": "cubic_in_out 0.4-0.8 s",
+    "pop": "back_out 0.25-0.4 s for small checks only",
+    "mechanical": "linear",
+    "hero_settle": "expo_out 1.0 s"
+  },
+  "stagger": {
+    "chars_ms": 35,
+    "items_ms": 120,
+    "nodes_ms": 70,
+    "rule": "one major entrance per beat; intentional simultaneous queue lock at 6.0"
+  },
+  "camera3d": {
+    "lens_mm": 45,
+    "rig": "forward dolly into selected card then frontal flattening by 6.0; no camera 3D after alignment",
+    "why_3d": "Scattered media occupies different depths; following a chosen card into a frontal organized workflow makes chaos-to-control spatially legible."
+  },
+  "music": {
+    "groove_from": 3.0,
+    "hats_from": 4.0,
+    "key": "A minor",
+    "bpm": 120,
+    "target_lufs": -16,
+    "true_peak_dbfs_max": -1
+  },
+  "scenes": [
+    {
+      "id": "chaos",
+      "start": 0,
+      "end": 3,
+      "text": "TOO MANY FILES?",
+      "pole": "from",
+      "energy": "high",
+      "density": 30,
+      "emotion": "overload"
+    },
+    {
+      "id": "intake",
+      "start": 3,
+      "end": 6,
+      "text": "DRAG. DROP.",
+      "pole": "to",
+      "energy": "medium",
+      "density": 18,
+      "emotion": "discovery"
+    },
+    {
+      "id": "queue",
+      "start": 6,
+      "end": 9,
+      "text": "ORGANIZE. RENDER.",
+      "pole": "to",
+      "energy": "medium",
+      "density": 12,
+      "emotion": "competence"
+    },
+    {
+      "id": "output",
+      "start": 9,
+      "end": 12,
+      "text": "READY TO DELIVER.",
+      "pole": "to",
+      "energy": "low",
+      "density": 6,
+      "emotion": "certainty"
+    },
+    {
+      "id": "hero",
+      "start": 12,
+      "end": 15,
+      "text": "RENDER DOCK / By BKE",
+      "pole": "to",
+      "energy": "rest",
+      "density": 2,
+      "emotion": "resolution"
+    }
+  ],
+  "beats": [
+    {
+      "t": 0.0,
+      "dominant": "Cards burst into staggered depth",
+      "supporting": "one gold-selected file remains legible",
+      "ambient": "low grain; depth haze",
+      "audio": "dark pad + kick",
+      "effects": [
+        "scatter",
+        "rotation_drift"
+      ],
+      "read_first": "scattered media"
+    },
+    {
+      "t": 0.5,
+      "dominant": "Headline assembles with uneven tracking",
+      "supporting": "cards cross behind title",
+      "ambient": "slow camera dolly; grain",
+      "audio": "kick + brief digital tick",
+      "effects": [
+        "tracking_collapse"
+      ],
+      "read_first": "TOO MANY FILES?"
+    },
+    {
+      "t": 1.0,
+      "dominant": "Camera advances through layered cards",
+      "supporting": "nearest card occludes a distant one",
+      "ambient": "small rotation drift",
+      "audio": "pulse bass",
+      "effects": [
+        "dolly_3d"
+      ],
+      "read_first": "the near card"
+    },
+    {
+      "t": 1.5,
+      "dominant": "Cards compress toward the centre",
+      "supporting": "headline holds position",
+      "ambient": "low grain",
+      "audio": "riser begins",
+      "effects": [
+        "scatter_converge"
+      ],
+      "read_first": "the tightening cluster"
+    },
+    {
+      "t": 2.0,
+      "dominant": "Selected file moves toward intake aperture",
+      "supporting": "other cards drift outward",
+      "ambient": "depth haze",
+      "audio": "riser rises",
+      "effects": [
+        "focus_pull"
+      ],
+      "read_first": "selected gold-edge card"
+    },
+    {
+      "t": 2.5,
+      "dominant": "Camera accelerates into selected file",
+      "supporting": "chaos cards fall out of focus",
+      "ambient": "subtle vignette",
+      "audio": "short pre-impact swell",
+      "effects": [
+        "dolly_3d"
+      ],
+      "read_first": "selected file"
+    },
+    {
+      "t": 3.0,
+      "dominant": "Selected file lands in drop zone",
+      "supporting": "intake frame lights gold",
+      "ambient": "subtle ambient grain",
+      "audio": "IMPACT #3 on frame",
+      "effects": [
+        "card_drop",
+        "flash"
+      ],
+      "read_first": "drop zone"
+    },
+    {
+      "t": 3.5,
+      "dominant": "DRAG. rises from a mask",
+      "supporting": "selected file remains parked",
+      "ambient": "background grid drift",
+      "audio": "groove enters",
+      "effects": [
+        "mask_rise"
+      ],
+      "read_first": "DRAG."
+    },
+    {
+      "t": 4.0,
+      "dominant": "DROP. rises from same baseline",
+      "supporting": "gold edge confirms accepted asset",
+      "ambient": "fine grain",
+      "audio": "percussive click",
+      "effects": [
+        "mask_rise"
+      ],
+      "read_first": "DROP."
+    },
+    {
+      "t": 4.5,
+      "dominant": "A row of media thumbnails aligns",
+      "supporting": "drop zone contracts into queue entrance",
+      "ambient": "low ambient motion",
+      "audio": "hats + bass",
+      "effects": [
+        "grid_align"
+      ],
+      "read_first": "aligned thumbnails"
+    },
+    {
+      "t": 5.0,
+      "dominant": "Camera tracks alongside the aligned lane",
+      "supporting": "queue frame grows ahead",
+      "ambient": "background parallax",
+      "audio": "groove continues",
+      "effects": [
+        "tracking_dolly"
+      ],
+      "read_first": "queue destination"
+    },
+    {
+      "t": 5.5,
+      "dominant": "Queue slots pull the cards into position",
+      "supporting": "gold progress rule prepares",
+      "ambient": "subtle grid",
+      "audio": "riser 2 begins",
+      "effects": [
+        "queue_stagger"
+      ],
+      "read_first": "queue slots"
+    },
+    {
+      "t": 6.0,
+      "dominant": "All queue rows lock simultaneously",
+      "supporting": "short gold line impact",
+      "ambient": "ambient dimming",
+      "audio": "IMPACT #2 on frame",
+      "effects": [
+        "grid_snap",
+        "flash"
+      ],
+      "read_first": "organized queue"
+    },
+    {
+      "t": 6.5,
+      "dominant": "ORGANIZE. reveals with a mask rise",
+      "supporting": "queue labels become legible",
+      "ambient": "quiet interface drift",
+      "audio": "groove",
+      "effects": [
+        "mask_rise"
+      ],
+      "read_first": "ORGANIZE."
+    },
+    {
+      "t": 7.0,
+      "dominant": "RENDER. reveals on the next baseline",
+      "supporting": "first job becomes active",
+      "ambient": "progress track motion",
+      "audio": "hi-hat",
+      "effects": [
+        "mask_rise"
+      ],
+      "read_first": "RENDER."
+    },
+    {
+      "t": 7.5,
+      "dominant": "Progress fills across active job",
+      "supporting": "other jobs remain restrained",
+      "ambient": "subtle grain",
+      "audio": "mechanical pulse",
+      "effects": [
+        "progress_fill"
+      ],
+      "read_first": "active job"
+    },
+    {
+      "t": 8.0,
+      "dominant": "Second job moves into active position",
+      "supporting": "first job shows completed check",
+      "ambient": "background still",
+      "audio": "two soft ticks",
+      "effects": [
+        "queue_stagger"
+      ],
+      "read_first": "next job"
+    },
+    {
+      "t": 8.5,
+      "dominant": "Output file moves to completion lane",
+      "supporting": "queue fades into back plane",
+      "ambient": "subtle depth haze",
+      "audio": "soft confirmation tone",
+      "effects": [
+        "output_handoff"
+      ],
+      "read_first": "completed file"
+    },
+    {
+      "t": 9.0,
+      "dominant": "Completed MP4 tile enters focus",
+      "supporting": "render controls fade to secondary",
+      "ambient": "background low motion",
+      "audio": "warm sustained chord",
+      "effects": [
+        "focus_pull"
+      ],
+      "read_first": "completed MP4"
+    },
+    {
+      "t": 9.5,
+      "dominant": "READY TO DELIVER. rises precisely",
+      "supporting": "MP4 tile holds",
+      "ambient": "grain only",
+      "audio": "light piano accent",
+      "effects": [
+        "mask_rise"
+      ],
+      "read_first": "READY TO DELIVER."
+    },
+    {
+      "t": 10.0,
+      "dominant": "A thin output line draws to the right",
+      "supporting": "completed file receives gold check",
+      "ambient": "low grain",
+      "audio": "small click",
+      "effects": [
+        "line_draw"
+      ],
+      "read_first": "output route"
+    },
+    {
+      "t": 10.5,
+      "dominant": "Camera gently reframes completed output",
+      "supporting": "all remaining UI dims",
+      "ambient": "subtle ambience",
+      "audio": "musical build begins",
+      "effects": [
+        "camera_settle"
+      ],
+      "read_first": "finished output"
+    },
+    {
+      "t": 11.0,
+      "dominant": "Completed file moves toward centre",
+      "supporting": "background UI exits cleanly",
+      "ambient": "grain only",
+      "audio": "final riser grows",
+      "effects": [
+        "centre_pull"
+      ],
+      "read_first": "completed file"
+    },
+    {
+      "t": 11.5,
+      "dominant": "Output tile contracts into brand mark",
+      "supporting": "brand typography prepares behind mask",
+      "ambient": "subtle vignette",
+      "audio": "pre-impact silence at 11.83s",
+      "effects": [
+        "morph_to_brand"
+      ],
+      "read_first": "central brand mark"
+    },
+    {
+      "t": 12.0,
+      "dominant": "RENDER DOCK lands centre-out",
+      "supporting": "brief strongest gold-white flash",
+      "ambient": "soft halo fades",
+      "audio": "IMPACT #1 on frame",
+      "effects": [
+        "centre_out_reveal",
+        "flash"
+      ],
+      "read_first": "RENDER DOCK"
+    },
+    {
+      "t": 12.5,
+      "dominant": "Hero settles frontal over 1.0s",
+      "supporting": "By BKE fades in",
+      "ambient": "faint grain",
+      "audio": "hero chord sustains",
+      "effects": [
+        "hero_settle"
+      ],
+      "read_first": "RENDER DOCK"
+    },
+    {
+      "t": 13.0,
+      "dominant": "Brand gold accent line completes",
+      "supporting": "no new major element",
+      "ambient": "near-static grain",
+      "audio": "soft chord tail",
+      "effects": [
+        "line_draw"
+      ],
+      "read_first": "By BKE"
+    },
+    {
+      "t": 13.5,
+      "dominant": "Declared hero stillness",
+      "supporting": "none",
+      "ambient": "very faint grain",
+      "audio": "music decay",
+      "effects": [
+        "end_hold"
+      ],
+      "read_first": "RENDER DOCK"
+    },
+    {
+      "t": 14.0,
+      "dominant": "Declared hero stillness",
+      "supporting": "none",
+      "ambient": "very faint grain",
+      "audio": "music decay",
+      "effects": [
+        "end_hold"
+      ],
+      "read_first": "RENDER DOCK"
+    },
+    {
+      "t": 14.5,
+      "dominant": "Declared hero stillness",
+      "supporting": "none",
+      "ambient": "very faint grain",
+      "audio": "final tail to silence",
+      "effects": [
+        "end_hold"
+      ],
+      "read_first": "RENDER DOCK"
+    }
+  ],
+  "events": [
+    {
+      "id": "chaos_open",
+      "t": 0,
+      "kind": "reveal",
+      "visual": "depth scatter",
+      "sync": "visual_only"
+    },
+    {
+      "id": "title_chaos",
+      "t": 0.5,
+      "kind": "text",
+      "visual": "TOO MANY FILES? tracking collapse",
+      "sync": "visual_only"
+    },
+    {
+      "id": "camera_chaos",
+      "t": 1,
+      "kind": "camera",
+      "visual": "dolly through scattered 2.5D cards",
+      "sync": "required",
+      "move3d": {
+        "type": "dolly",
+        "end": 3,
+        "ease": "cubic_in_out",
+        "rank": 2,
+        "meaning": "navigate disorder"
+      },
+      "audio": "swell",
+      "audio_offset": -0.133333
+    },
+    {
+      "id": "riser_discovery",
+      "t": 2.5,
+      "kind": "anticipation",
+      "visual": "camera accelerates into selected file",
+      "audio": "riser",
+      "audio_offset": -0.166667,
+      "sync": "audio_only",
+      "duration": 0.5
+    },
+    {
+      "id": "discovery",
+      "t": 3,
+      "kind": "impact",
+      "visual": "selected card lands in drop zone",
+      "audio": "impact",
+      "audio_offset": 0,
+      "rank": 3,
+      "gain": 0.55,
+      "sync": "required",
+      "anticipation": "focus pull + riser + dolly"
+    },
+    {
+      "id": "text_drag",
+      "t": 3.5,
+      "kind": "text",
+      "visual": "DRAG. mask rise",
+      "sync": "visual_only"
+    },
+    {
+      "id": "text_drop",
+      "t": 4,
+      "kind": "text",
+      "visual": "DROP. mask rise",
+      "sync": "visual_only"
+    },
+    {
+      "id": "camera_lane",
+      "t": 5,
+      "kind": "camera",
+      "visual": "track into queue lane",
+      "sync": "required",
+      "move3d": {
+        "type": "dolly",
+        "end": 6,
+        "ease": "cubic_in_out",
+        "rank": 1,
+        "meaning": "follow accepted media into workflow"
+      },
+      "audio": "swell",
+      "audio_offset": -0.133333
+    },
+    {
+      "id": "riser_grid",
+      "t": 5.5,
+      "kind": "anticipation",
+      "visual": "rows prepare to align",
+      "audio": "riser",
+      "audio_offset": -0.133333,
+      "sync": "audio_only",
+      "duration": 0.5
+    },
+    {
+      "id": "grid_impact",
+      "t": 6,
+      "kind": "impact",
+      "visual": "all queue rows lock into place",
+      "audio": "impact",
+      "audio_offset": 0,
+      "rank": 2,
+      "gain": 0.75,
+      "sync": "required",
+      "anticipation": "rows draw toward alignment + riser"
+    },
+    {
+      "id": "text_organize",
+      "t": 6.5,
+      "kind": "text",
+      "visual": "ORGANIZE. mask rise",
+      "sync": "visual_only"
+    },
+    {
+      "id": "text_render",
+      "t": 7,
+      "kind": "text",
+      "visual": "RENDER. mask rise",
+      "sync": "visual_only"
+    },
+    {
+      "id": "progress",
+      "t": 7.5,
+      "kind": "reveal",
+      "visual": "render progress fills linearly",
+      "sync": "visual_only"
+    },
+    {
+      "id": "output_confirm",
+      "t": 8.5,
+      "kind": "accent",
+      "visual": "output file lands with check",
+      "audio": "tick",
+      "audio_offset": 0,
+      "sync": "required"
+    },
+    {
+      "id": "text_ready",
+      "t": 9.5,
+      "kind": "text",
+      "visual": "READY TO DELIVER. mask rise",
+      "sync": "visual_only"
+    },
+    {
+      "id": "output_line",
+      "t": 10,
+      "kind": "accent",
+      "visual": "output line and check",
+      "audio": "tick",
+      "audio_offset": 0,
+      "sync": "required"
+    },
+    {
+      "id": "hero_riser",
+      "t": 11,
+      "kind": "anticipation",
+      "visual": "output tile moves toward brand",
+      "audio": "riser",
+      "audio_offset": -0.166667,
+      "sync": "audio_only",
+      "duration": 1
+    },
+    {
+      "id": "hero",
+      "t": 12,
+      "kind": "impact",
+      "visual": "brand reveal centre-out, strongest flash",
+      "audio": "impact",
+      "audio_offset": 0,
+      "rank": 1,
+      "gain": 1,
+      "sync": "required",
+      "anticipation": "output-to-mark morph + rising chord + pre-hit silence"
+    },
+    {
+      "id": "hero_settle",
+      "t": 12.5,
+      "kind": "reveal",
+      "visual": "brand settles and By BKE fades",
+      "sync": "visual_only"
+    },
+    {
+      "id": "hero_hold",
+      "t": 13.5,
+      "kind": "reveal",
+      "visual": "intentional static end card",
+      "sync": "visual_only"
+    }
+  ],
+  "quiet": [
+    {
+      "start": 13.5,
+      "end": 15,
+      "reason": "final brand hold; intentional stillness and audio decay"
+    }
+  ],
+  "audio_bed": [
+    "kick",
+    "hat",
+    "clap",
+    "pad",
+    "bass"
+  ],
+  "motion_qa": {
+    "style": "kinetic"
+  }
+}

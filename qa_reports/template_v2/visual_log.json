@@ -1,0 +1,50 @@
+[
+ {
+  "event_id": "glitch_open",
+  "t": 0.4,
+  "scene": "chaos",
+  "renderer": "glitch_headline"
+ },
+ {
+  "event_id": "glitch_1",
+  "t": 1.15,
+  "scene": "chaos",
+  "renderer": "glitch_headline"
+ },
+ {
+  "event_id": "glitch_2",
+  "t": 1.6,
+  "scene": "chaos",
+  "renderer": "glitch_headline"
+ },
+ {
+  "event_id": "reveal",
+  "t": 2.0,
+  "scene": "reveal",
+  "renderer": "rise_headline"
+ },
+ {
+  "event_id": "text_reveal",
+  "t": 2.1,
+  "scene": "reveal",
+  "renderer": "rise_headline"
+ },
+ {
+  "event_id": "zoom_out",
+  "t": 3.88,
+  "scene": "reveal",
+  "renderer": "rise_headline"
+ },
+ {
+  "event_id": "hero",
+  "t": 4.0,
+  "scene": "hero",
+  "renderer": "hero"
+ },
+ {
+  "event_id": "text_hero",
+  "t": 4.18,
+  "scene": "hero",
+  "renderer": "hero"
+ }
+]

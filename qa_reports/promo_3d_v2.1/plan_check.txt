@@ -1,0 +1,6 @@
+PLAN CHECK
+PASS  [polarity] work scattered in every direction and depth -> one flat, ordered system
+PASS  [beats] 12 beats cover 6.0s at 0.5 s resolution
+PASS  [impacts] ranked: 1:title@4.0, 2:snap@2.5
+PASS  [3d] 3D plan: 4 moves, 1 camera move(s), lens 40 mm
+RESULT: PASS (0 fail, 0 warn)

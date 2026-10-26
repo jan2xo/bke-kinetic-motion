@@ -1,0 +1,47 @@
+SYNC QA  renderdock_v1
+-- DECLARED (manifest vs scheduled cues; proves plan and code agree)
+FAIL  [missing_sfx] glitch_2 @ 1.62s expects 'glitch' at 1.620s; none scheduled (nearest glitch at 1.448s, -173 ms)
+FAIL  [orphan_audio] 'glitch' at 0.922s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 0.977s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 0.532s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 0.998s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 1.448s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 0.909s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 1.876s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 0.586s has no visual event in the manifest
+FAIL  [orphan_audio] 'glitch' at 1.137s has no visual event in the manifest
+WARN  [overlap] double trigger: 'glitch' 0.532s and 'glitch' 0.586s are 53 ms apart
+WARN  [overlap] double trigger: 'glitch' 0.909s and 'glitch' 0.922s are 13 ms apart
+WARN  [overlap] double trigger: 'glitch' 0.922s and 'glitch' 0.977s are 55 ms apart
+WARN  [overlap] double trigger: 'glitch' 0.977s and 'glitch' 0.998s are 21 ms apart
+WARN  [overlap] double trigger: 'glitch' 1.137s and 'glitch' 1.173s are 36 ms apart
+PASS  [synced] build_riser @ 0.05s <- 'riser' +0 ms
+PASS  [synced] glitch_open @ 0.32s <- 'glitch' +0 ms
+PASS  [synced] glitch_1 @ 1.20s <- 'glitch' -27 ms
+PASS  [synced] late_riser @ 1.45s <- 'riser' +0 ms
+PASS  [synced] reveal @ 2.00s <- 'impact' +0 ms
+PASS  [synced] whip @ 3.86s <- 'whoosh' +0 ms
+PASS  [synced] card_pickup @ 4.45s <- 'glitch' +0 ms
+PASS  [synced] card_drop @ 5.05s <- 'glitch' +0 ms
+PASS  [synced] row_2 @ 5.18s <- 'glitch' +0 ms
+PASS  [synced] row_3 @ 5.32s <- 'glitch' +0 ms
+PASS  [synced] row_4 @ 5.46s <- 'glitch' +0 ms
+PASS  [synced] zoom_through @ 6.36s <- 'whoosh' +0 ms
+PASS  [synced] control_cut @ 6.50s <- 'kick' +0 ms
+PASS  [synced] hero_riser @ 7.60s <- 'riser' +0 ms
+PASS  [synced] hero @ 8.50s <- 'impact' +0 ms
+-- VERIFIED (manifest vs rendered MP4; only distinct events count)
+INFO  [not_measurable] glitch_1 @ 1.20s: audio onset not distinct (salience 1.3); visual change not distinct (salience 1.7)
+INFO  [not_measurable] glitch_2 @ 1.62s: audio onset not distinct (salience 1.7); visual change not distinct (salience 1.8)
+INFO  [not_measurable] whip @ 3.86s: 'whoosh' is a swell, so its timing can't be measured from onsets
+INFO  [not_measurable] card_pickup @ 4.45s: visual change not distinct (salience 0.8)
+INFO  [not_measurable] card_drop @ 5.05s: visual change not distinct (salience 1.3)
+INFO  [not_measurable] row_2 @ 5.18s: visual change not distinct (salience 1.4)
+INFO  [not_measurable] row_3 @ 5.32s: visual change not distinct (salience 1.7)
+INFO  [not_measurable] row_4 @ 5.46s: visual change not distinct (salience 2.4)
+INFO  [not_measurable] zoom_through @ 6.36s: 'whoosh' is a swell, so its timing can't be measured from onsets
+PASS  [verified] glitch_open: sound +16 ms vs picture (expected +0)
+PASS  [verified] reveal: sound -8 ms vs picture (expected +0)
+PASS  [verified] control_cut: sound -4 ms vs picture (expected +0)
+PASS  [verified] hero: sound -8 ms vs picture (expected +0)
+RESULT: FAIL (10 fail, 5 warn)  verified in render: 4, not measurable: 9

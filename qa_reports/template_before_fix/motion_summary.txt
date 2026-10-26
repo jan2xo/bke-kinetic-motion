@@ -1,0 +1,7 @@
+MOTION QA  template_before_fix_preview  6.00s @ 30fps  src 1920x1080  analysis 320px  floor 0.79  hold<1.26
+INFO  top peaks: 2.00s 97 (flash), 4.00s 95 (flash), 0.40s 15 (content)
+INFO  scenes: chaos 3.38[high], reveal 1.49[medium], hero 1.80[medium]
+FAIL  [hold] low-motion hold 2.83-3.93s (1.10s, activity 0.83 < 1.26) not declared as quiet
+WARN  [impact_rank] measured hit size disagrees with narrative rank: hero should exceed reveal
+PASS  [hold] stillness 5.13-6.00s (0.87s) accepted: end-card hold after the final impact
+RESULT: FAIL (1 fail, 1 warn)

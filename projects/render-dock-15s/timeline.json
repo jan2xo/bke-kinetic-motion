@@ -1,0 +1,749 @@
+{
+ "schema": "bke-motion-timeline/1",
+ "title": "Render Dock by BKE - 15 s vertical showcase (9:16, music only)",
+ "duration": 15.0,
+ "fps": 30,
+ "canvas": {
+  "w": 1080,
+  "h": 1920
+ },
+ "bpm": 120,
+ "tolerance_ms": 34,
+ "polarity": {
+  "from": "a pile of photos, clips and folders scattered everywhere",
+  "to": "one finished 1080p MP4 per folder",
+  "statement": "Render Dock turns scattered photos, videos and folders into finished MP4s: drag, drop, done."
+ },
+ "camera3d": {
+  "why_3d": "Depth is the mess: files at every distance and angle. The drop collapses all that depth into one flat zone on the screen plane, which is the product's promise.",
+  "lens_mm": 40,
+  "lights": 1,
+  "key_light": "cyan rim from upper left + ambient",
+  "max_text_tilt_deg": 20,
+  "dof": "focus on the headline while it is read, pulled to the drop zone plane before the drop",
+  "end_state": "3D ends at 3.5 s; everything after is flat and frontal"
+ },
+ "vocabulary": {
+  "from": [
+   {
+    "effect": "depth_scatter",
+    "meaning": "files at every distance: too much, nowhere in particular"
+   },
+   {
+    "effect": "rotation_drift",
+    "meaning": "nothing aligned, nothing at rest"
+   },
+   {
+    "effect": "dolly_through",
+    "meaning": "we move into the mess; its depth shows how much there is"
+   },
+   {
+    "effect": "defocus_depth",
+    "meaning": "you can only read one thing at a time"
+   }
+  ],
+  "to": [
+   {
+    "effect": "drop_collapse",
+    "meaning": "every file falls into one place at once: order arrives"
+   },
+   {
+    "effect": "drag_arc",
+    "meaning": "direct manipulation: the user is in control"
+   },
+   {
+    "effect": "mask_rise",
+    "meaning": "precise, editorial, from a fixed baseline"
+   },
+   {
+    "effect": "stagger",
+    "meaning": "sequence, process, a queue"
+   },
+   {
+    "effect": "progress_fill",
+    "meaning": "work getting done by itself"
+   },
+   {
+    "effect": "check_pop",
+    "meaning": "confirmation: this one is finished"
+   },
+   {
+    "effect": "ken_burns",
+    "meaning": "the real output: photos become a moving slideshow"
+   },
+   {
+    "effect": "fixed_playhead",
+    "meaning": "a finished video, playing"
+   },
+   {
+    "effect": "toast_slide",
+    "meaning": "the system tells you it is done"
+   },
+   {
+    "effect": "centre_out_reveal",
+    "meaning": "symmetry = resolved"
+   },
+   {
+    "effect": "shine_sweep",
+    "meaning": "polish, premium finish"
+   }
+  ],
+  "neutral": [
+   {
+    "effect": "flash",
+    "meaning": "impact weight by rank"
+   },
+   {
+    "effect": "whip_pan",
+    "meaning": "lateral move = next step, same level"
+   },
+   {
+    "effect": "zoom_through",
+    "meaning": "go inside: see the output itself"
+   },
+   {
+    "effect": "focus_pull",
+    "meaning": "attention moves to what should be read now"
+   },
+   {
+    "effect": "fog_depth",
+    "meaning": "far things fade"
+   },
+   {
+    "effect": "grid_drift",
+    "meaning": "ambient life"
+   },
+   {
+    "effect": "particles",
+    "meaning": "ambient celebration"
+   },
+   {
+    "effect": "recede",
+    "meaning": "step back so the name can lead"
+   }
+  ]
+ },
+ "accent": {
+  "color": "#3CC8F0",
+  "budget_pct": 10,
+  "reserved_for": [
+   "drop zone",
+   "progress",
+   "done checks",
+   "playhead",
+   "brand bolt",
+   "punctuation"
+  ]
+ },
+ "easing": {
+  "arrive": "expo_out 0.45-0.6 s",
+  "depart": "expo_in",
+  "transform": "cubic_in_out (camera, progress, drag arcs)",
+  "pop": "back_out",
+  "pop_targets": "done checks, toast icon",
+  "mechanical": "linear (playhead, particles, drift)"
+ },
+ "stagger": {
+  "chars_ms": 30,
+  "items_ms": 120,
+  "rule": "queue rows and checks stagger top to bottom (a queue); the drop collapse is simultaneous"
+ },
+ "music": {
+  "groove_from": 3.0,
+  "hats_from": 6.0
+ },
+ "scenes": [
+  {
+   "id": "scatter",
+   "start": 0.0,
+   "end": 3.0,
+   "text": "TOO MANY FILES?",
+   "pole": "from",
+   "energy": "high",
+   "density": 30,
+   "emotion": "overwhelm, depth"
+  },
+  {
+   "id": "drop",
+   "start": 3.0,
+   "end": 6.0,
+   "text": "DRAG. DROP.",
+   "pole": "to",
+   "energy": "high",
+   "density": 9,
+   "emotion": "relief: one place"
+  },
+  {
+   "id": "queue",
+   "start": 6.0,
+   "end": 9.0,
+   "text": "EVERY FOLDER. ITS OWN MP4.",
+   "pole": "to",
+   "energy": "medium",
+   "density": 8,
+   "emotion": "it works by itself"
+  },
+  {
+   "id": "output",
+   "start": 9.0,
+   "end": 12.0,
+   "text": "1080p MP4, READY",
+   "pole": "to",
+   "energy": "medium",
+   "density": 6,
+   "emotion": "proof: the finished video"
+  },
+  {
+   "id": "title",
+   "start": 12.0,
+   "end": 15.0,
+   "text": "BKE RENDER DOCK / DRAG. DROP. DONE.",
+   "pole": "to",
+   "energy": "medium",
+   "density": 3,
+   "emotion": "payoff, then rest"
+  }
+ ],
+ "beats": [
+  {
+   "t": 0.0,
+   "dominant": "media cards burst out of the depth, tumbling",
+   "supporting": "camera starts a slow dolly",
+   "ambient": "fog, card drift",
+   "audio": "pad, riser",
+   "effects": [
+    "depth_scatter",
+    "rotation_drift",
+    "dolly_through",
+    "fog_depth"
+   ],
+   "read_first": "depth"
+  },
+  {
+   "t": 0.5,
+   "dominant": "TOO MANY FILES? arrives frontal, in focus",
+   "supporting": "cards tumble past",
+   "ambient": "fog",
+   "audio": "riser",
+   "effects": [
+    "rotation_drift",
+    "defocus_depth"
+   ],
+   "read_first": "TOO MANY FILES?"
+  },
+  {
+   "t": 1.0,
+   "dominant": "cards stream sideways behind the headline",
+   "supporting": null,
+   "ambient": "fog",
+   "audio": "riser",
+   "effects": [
+    "rotation_drift",
+    "dolly_through"
+   ],
+   "read_first": "TOO MANY FILES?"
+  },
+  {
+   "t": 1.5,
+   "dominant": "near cards sweep past the lens",
+   "supporting": null,
+   "ambient": "fog",
+   "audio": "riser",
+   "effects": [
+    "dolly_through",
+    "defocus_depth"
+   ],
+   "read_first": "headline"
+  },
+  {
+   "t": 2.0,
+   "dominant": "more files keep arriving from the depth",
+   "supporting": null,
+   "ambient": "card drift",
+   "audio": "riser",
+   "effects": [
+    "depth_scatter",
+    "rotation_drift"
+   ],
+   "read_first": "headline"
+  },
+  {
+   "t": 2.5,
+   "dominant": "headline departs expo-in, focus pulls to the drop plane",
+   "supporting": null,
+   "ambient": "fog",
+   "audio": "riser peaks",
+   "effects": [
+    "focus_pull",
+    "rotation_drift"
+   ],
+   "read_first": "focus moving"
+  },
+  {
+   "t": 3.0,
+   "dominant": "every card collapses into the drop zone",
+   "supporting": "flash",
+   "ambient": "grid",
+   "audio": "IMPACT",
+   "effects": [
+    "drop_collapse",
+    "flash"
+   ],
+   "read_first": "drop zone"
+  },
+  {
+   "t": 3.5,
+   "dominant": "DRAG. DROP. rises from its baseline",
+   "supporting": "drop zone settles",
+   "ambient": "grid drift",
+   "audio": "groove",
+   "effects": [
+    "mask_rise",
+    "grid_drift"
+   ],
+   "read_first": "DRAG. DROP."
+  },
+  {
+   "t": 4.0,
+   "dominant": "first folder arcs in under the cursor",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "groove",
+   "effects": [
+    "drag_arc"
+   ],
+   "read_first": "folder"
+  },
+  {
+   "t": 4.5,
+   "dominant": "folder lands, its chip joins the queue",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "drag_arc",
+    "stagger"
+   ],
+   "read_first": "chip"
+  },
+  {
+   "t": 5.0,
+   "dominant": "second folder arcs in",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "drag_arc",
+    "stagger"
+   ],
+   "read_first": "folder"
+  },
+  {
+   "t": 5.5,
+   "dominant": "third folder lands, three chips queued",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "drag_arc",
+    "stagger"
+   ],
+   "read_first": "queue"
+  },
+  {
+   "t": 6.0,
+   "dominant": "whip to the queue",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "whoosh",
+   "effects": [
+    "whip_pan"
+   ],
+   "read_first": "queue"
+  },
+  {
+   "t": 6.5,
+   "dominant": "header rises, rows stagger in",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "groove, hats",
+   "effects": [
+    "mask_rise",
+    "stagger"
+   ],
+   "read_first": "EVERY FOLDER."
+  },
+  {
+   "t": 7.0,
+   "dominant": "progress bars fill",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "groove",
+   "effects": [
+    "progress_fill"
+   ],
+   "read_first": "progress"
+  },
+  {
+   "t": 7.5,
+   "dominant": "first row completes, check pops",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "progress_fill",
+    "check_pop"
+   ],
+   "read_first": "check"
+  },
+  {
+   "t": 8.0,
+   "dominant": "second row completes, check pops",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "progress_fill",
+    "check_pop"
+   ],
+   "read_first": "check"
+  },
+  {
+   "t": 8.5,
+   "dominant": "third row completes, all done",
+   "supporting": null,
+   "ambient": "grid drift",
+   "audio": "tick",
+   "effects": [
+    "check_pop"
+   ],
+   "read_first": "checks"
+  },
+  {
+   "t": 9.0,
+   "dominant": "zoom through into the finished MP4",
+   "supporting": "flash",
+   "ambient": "particles",
+   "audio": "IMPACT",
+   "effects": [
+    "zoom_through",
+    "flash"
+   ],
+   "read_first": "video"
+  },
+  {
+   "t": 9.5,
+   "dominant": "photos drift in a Ken Burns slideshow",
+   "supporting": "playhead runs",
+   "ambient": "particles",
+   "audio": "groove",
+   "effects": [
+    "ken_burns",
+    "fixed_playhead"
+   ],
+   "read_first": "video"
+  },
+  {
+   "t": 10.0,
+   "dominant": "slideshow crossfades to the next photo",
+   "supporting": "spec chips stagger in",
+   "ambient": "particles",
+   "audio": "groove",
+   "effects": [
+    "ken_burns",
+    "stagger"
+   ],
+   "read_first": "1080p"
+  },
+  {
+   "t": 10.5,
+   "dominant": "Render complete toast slides up",
+   "supporting": "playhead runs",
+   "ambient": "particles",
+   "audio": "tick",
+   "effects": [
+    "toast_slide",
+    "fixed_playhead"
+   ],
+   "read_first": "Render complete"
+  },
+  {
+   "t": 11.0,
+   "dominant": "slideshow moves on, toast holds",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "groove",
+   "effects": [
+    "ken_burns",
+    "fixed_playhead"
+   ],
+   "read_first": "video"
+  },
+  {
+   "t": 11.5,
+   "dominant": "the output recedes, darkening",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "whoosh",
+   "effects": [
+    "recede"
+   ],
+   "read_first": "video"
+  },
+  {
+   "t": 12.0,
+   "dominant": "flash, BKE bolt and name reveal centre-out",
+   "supporting": "glow",
+   "ambient": "particles",
+   "audio": "FINAL IMPACT",
+   "effects": [
+    "flash",
+    "centre_out_reveal"
+   ],
+   "read_first": "RENDER DOCK"
+  },
+  {
+   "t": 12.5,
+   "dominant": "shine sweeps the name",
+   "supporting": "rule grows",
+   "ambient": "particles",
+   "audio": "chord",
+   "effects": [
+    "shine_sweep",
+    "particles"
+   ],
+   "read_first": "RENDER DOCK"
+  },
+  {
+   "t": 13.0,
+   "dominant": "DRAG. DROP. DONE. settles",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "chord rings",
+   "effects": [
+    "mask_rise",
+    "particles"
+   ],
+   "read_first": "DRAG. DROP. DONE."
+  },
+  {
+   "t": 13.5,
+   "dominant": "platform line fades in",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "chord rings",
+   "effects": [
+    "particles"
+   ],
+   "read_first": "for Windows"
+  },
+  {
+   "t": 14.0,
+   "dominant": "end card rest",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "fade",
+   "effects": [
+    "particles"
+   ],
+   "read_first": "brand"
+  },
+  {
+   "t": 14.5,
+   "dominant": "end card rest",
+   "supporting": null,
+   "ambient": "particles",
+   "audio": "fade",
+   "effects": [
+    "particles"
+   ],
+   "read_first": "brand"
+  }
+ ],
+ "events": [
+  {
+   "id": "cam_dolly",
+   "t": 0.05,
+   "kind": "camera",
+   "visual": "camera dollies 5600 -> 3800 units through the scattered cards",
+   "audio": "riser",
+   "sync": "required",
+   "duration": 2.85,
+   "move3d": {
+    "type": "dolly",
+    "end": 2.95,
+    "ease": "cubic_in_out",
+    "rank": 2,
+    "from": [
+     0,
+     0,
+     5600
+    ],
+    "to": [
+     0,
+     0,
+     3800
+    ],
+    "meaning": "moving into the mess: its depth shows how much there is"
+   }
+  },
+  {
+   "id": "headline",
+   "t": 0.4,
+   "kind": "text",
+   "visual": "TOO MANY / FILES? arrives frontal (expo-out), in the focus plane",
+   "sync": "visual_only"
+  },
+  {
+   "id": "drop",
+   "t": 3.0,
+   "kind": "impact",
+   "style": "cut_flash",
+   "visual": "all cards collapse into the drop zone (expo-out, peak on this frame) + 0.3 flash",
+   "audio": "impact",
+   "gain": 0.75,
+   "rank": 3,
+   "sync": "required",
+   "anticipation": "riser + headline exits expo-in + focus pull to the drop plane",
+   "move3d": {
+    "type": "snap_align",
+    "ease": "expo_out",
+    "rank": 1,
+    "meaning": "all that depth collapses into one place on the screen: order arrives"
+   }
+  },
+  {
+   "id": "drop_title",
+   "t": 3.3,
+   "kind": "text",
+   "visual": "DRAG. DROP. rises from a mask",
+   "sync": "visual_only"
+  },
+  {
+   "id": "land1",
+   "t": 4.5,
+   "kind": "accent",
+   "visual": "folder 1 lands in the drop zone, chip appears",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "land2",
+   "t": 5.0,
+   "kind": "accent",
+   "visual": "folder 2 lands, chip appears",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "land3",
+   "t": 5.5,
+   "kind": "accent",
+   "visual": "folder 3 lands, chip appears",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "whip_queue",
+   "t": 6.0,
+   "kind": "transition",
+   "style": "whip",
+   "visual": "whip left from the drop zone to the queue (expo-in out, expo-out in)",
+   "audio": "whoosh",
+   "audio_offset": -0.16,
+   "sync": "required",
+   "duration": 0.3
+  },
+  {
+   "id": "done1",
+   "t": 7.5,
+   "kind": "accent",
+   "visual": "row 1 reaches 100%, check pops (back-out)",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "done2",
+   "t": 8.0,
+   "kind": "accent",
+   "visual": "row 2 reaches 100%, check pops",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "done3",
+   "t": 8.5,
+   "kind": "accent",
+   "visual": "row 3 reaches 100%, check pops",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "output",
+   "t": 9.0,
+   "kind": "impact",
+   "style": "zoom",
+   "visual": "zoom through into the finished 1080p MP4 + 0.45 flash",
+   "audio": "impact",
+   "gain": 0.85,
+   "rank": 2,
+   "sync": "required",
+   "anticipation": "third check + rows push toward the lens (expo-in zoom)"
+  },
+  {
+   "id": "toast",
+   "t": 10.5,
+   "kind": "accent",
+   "visual": "Render complete toast slides up (expo-out)",
+   "audio": "tick",
+   "sync": "required"
+  },
+  {
+   "id": "recede",
+   "t": 11.85,
+   "kind": "transition",
+   "style": "zoom_out",
+   "visual": "output recedes and darkens, flash ramp",
+   "audio": "whoosh",
+   "audio_offset": -0.16,
+   "sync": "required",
+   "duration": 0.3
+  },
+  {
+   "id": "title",
+   "t": 12.0,
+   "kind": "impact",
+   "style": "zoom",
+   "visual": "flash 0.85, bolt + RENDER DOCK zoom 1.15 -> 1, centre-out letters",
+   "audio": "impact",
+   "rank": 1,
+   "sync": "required",
+   "anticipation": "output recedes + whoosh"
+  },
+  {
+   "id": "title_text",
+   "t": 12.18,
+   "kind": "reveal",
+   "visual": "RENDER DOCK centre-out, shine 12.75-13.25",
+   "sync": "visual_only"
+  }
+ ],
+ "quiet": [
+  {
+   "start": 13.9,
+   "end": 15.0,
+   "reason": "end card rest: flat, frontal, still; let the brand read"
+  }
+ ],
+ "audio_bed": [
+  "kick",
+  "hat",
+  "clap",
+  "pad",
+  "pluck",
+  "bass"
+ ],
+ "motion_qa": {
+  "style": "kinetic"
+ }
+}

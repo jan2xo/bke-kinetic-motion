@@ -1,0 +1,17 @@
+SYNC QA  template_v2
+-- DECLARED (manifest vs scheduled cues; proves plan and code agree)
+PASS  [synced] build_riser @ 0.05s <- 'riser' +0 ms
+PASS  [synced] glitch_open @ 0.40s <- 'glitch' +0 ms
+PASS  [synced] glitch_1 @ 1.15s <- 'glitch' +0 ms
+PASS  [synced] glitch_2 @ 1.60s <- 'glitch' +0 ms
+PASS  [synced] reveal @ 2.00s <- 'impact' +0 ms
+PASS  [synced] zoom_out @ 3.88s <- 'whoosh' +0 ms
+PASS  [synced] hero @ 4.00s <- 'impact' +0 ms
+-- VERIFIED (manifest vs rendered MP4; only distinct events count)
+INFO  [not_measurable] glitch_1 @ 1.15s: audio onset not distinct (salience 1.6); visual change not distinct (salience 2.2)
+INFO  [not_measurable] glitch_2 @ 1.60s: audio onset not distinct (salience 1.7); visual change not distinct (salience 2.3)
+INFO  [not_measurable] zoom_out @ 3.88s: 'whoosh' is a swell, so its timing can't be measured from onsets
+PASS  [verified] glitch_open: sound -8 ms vs picture (expected +0)
+PASS  [verified] reveal: sound -8 ms vs picture (expected +0)
+PASS  [verified] hero: sound -8 ms vs picture (expected +0)
+RESULT: PASS (0 fail, 0 warn)  verified in render: 3, not measurable: 3

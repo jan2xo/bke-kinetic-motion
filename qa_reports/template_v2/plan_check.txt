@@ -1,0 +1,5 @@
+PLAN CHECK
+PASS  [polarity] too many files -> one product in control
+PASS  [beats] 12 beats cover 6.0s at 0.5 s resolution
+PASS  [impacts] ranked: 1:hero@4.0, 2:reveal@2.0
+RESULT: PASS (0 fail, 0 warn)

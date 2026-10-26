@@ -1,0 +1,14 @@
+SYNC QA  timeline_3d.json
+-- DECLARED (manifest vs scheduled cues; proves plan and code agree)
+PASS  [synced] cam_dolly @ 0.05s <- 'riser' +0 ms
+PASS  [synced] snap @ 2.50s <- 'impact' +0 ms
+PASS  [synced] rim_sweep @ 3.00s <- 'tick' +0 ms
+PASS  [synced] recede @ 3.88s <- 'whoosh' +0 ms
+PASS  [synced] title @ 4.00s <- 'impact' +0 ms
+-- VERIFIED (manifest vs rendered MP4; only distinct events count)
+INFO  [not_measurable] cam_dolly @ 0.05s: 'riser' is a swell, so its timing can't be measured from onsets
+INFO  [not_measurable] rim_sweep @ 3.00s: visual change not distinct (salience 0.8)
+INFO  [not_measurable] recede @ 3.88s: 'whoosh' is a swell, so its timing can't be measured from onsets
+PASS  [verified] snap: sound -8 ms vs picture (expected +0)
+PASS  [verified] title: sound -4 ms vs picture (expected +0)
+RESULT: PASS (0 fail, 0 warn)  verified in render: 2, not measurable: 3

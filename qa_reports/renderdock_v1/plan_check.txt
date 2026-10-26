@@ -1,0 +1,5 @@
+PLAN CHECK
+PASS  [polarity] media chaos -> production control
+PASS  [beats] 20 beats cover 10.0s at 0.5 s resolution
+PASS  [impacts] ranked: 1:hero@8.5, 2:reveal@2.0, 3:control_cut@6.5
+RESULT: PASS (0 fail, 0 warn)

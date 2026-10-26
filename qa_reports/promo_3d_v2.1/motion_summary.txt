@@ -1,0 +1,8 @@
+MOTION QA  promo_3d.mp4  6.00s @ 30fps  src 1920x1080  analysis 320px  floor 0.84  hold<1.35
+INFO  top peaks: 4.00s 145 (flash), 2.50s 92 (flash)
+INFO  scenes: scatter 2.62[high], align 2.22[medium], title 1.96[medium]
+WARN  [energy_sag] scene scatter (planned high) sags 0.5-1.0s: 1.54 vs 1.00 x medium reference 1.58
+PASS  [hold] stillness 5.20-6.00s (0.80s) accepted: declared quiet: end card rest: flat, frontal, still; let the brand read
+PASS  [impact_rank] hit sizes follow narrative rank: title(145.31) > snap(91.73)
+PASS  [holds] no undeclared hold >= 0.45s
+RESULT: WARN (0 fail, 1 warn)

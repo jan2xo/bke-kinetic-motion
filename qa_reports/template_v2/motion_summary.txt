@@ -1,0 +1,7 @@
+MOTION QA  template_v2.mp4  6.00s @ 30fps  src 1920x1080  analysis 320px  floor 0.84  hold<1.34
+INFO  top peaks: 4.00s 140 (flash), 2.00s 88 (flash), 0.40s 15 (content)
+INFO  scenes: chaos 3.35[high], reveal 1.82[medium], hero 1.91[medium]
+PASS  [hold] stillness 5.20-6.00s (0.80s) accepted: declared quiet: end card rest: let the brand read
+PASS  [impact_rank] hit sizes follow narrative rank: hero(140.49) > reveal(87.83)
+PASS  [holds] no undeclared hold >= 0.45s
+RESULT: PASS (0 fail, 0 warn)

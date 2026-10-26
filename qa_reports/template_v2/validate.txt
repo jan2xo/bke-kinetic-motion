@@ -1,0 +1,10 @@
+PASS container duration 6.000s (target 6.0s)
+PASS resolution 1920x1080
+PASS fps 30.000
+PASS pix_fmt yuv420p
+PASS frame count 180 (expected 180)
+PASS audio duration 6.000s
+PASS loudness -15.9 LUFS
+PASS true peak -1.2 dBFS
+PASS no black gaps 
+INFO contact sheet -> template_v2_contact.png (inspect: text legible, no clipped glyphs, no boxy glow edges, transitions land on cuts)

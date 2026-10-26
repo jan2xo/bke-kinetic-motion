@@ -1,0 +1,7 @@
+MOTION QA  RenderDock_Promo_16x9.mp4  10.00s @ 30fps  src 1920x1080  analysis 320px  floor 0.89  hold<1.43
+INFO  top peaks: 8.50s 129 (flash), 2.00s 98 (flash), 6.50s 66 (flash), 0.40s 26 (flash), 4.00s 14 (content)
+INFO  scenes: chaos 4.49[high], reveal 1.73[medium], demo 1.54[medium], control 3.54[medium], hero 2.59[medium]
+FAIL  [hold] low-motion hold 2.90-3.87s (0.97s, activity 0.90 < 1.43) not declared as quiet
+WARN  [energy_sag] scene chaos (planned high) sags 1.0-1.5s: 1.79 vs 1.00 x medium reference 1.83
+PASS  [impact_rank] hit sizes follow narrative rank: hero(129.0) > reveal(97.82) > control_cut(65.97)
+RESULT: FAIL (1 fail, 1 warn)

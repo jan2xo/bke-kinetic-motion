@@ -1,0 +1,20 @@
+{
+ "result": "PASS",
+ "items": [
+  {
+   "level": "PASS",
+   "code": "polarity",
+   "message": "media chaos -> production control"
+  },
+  {
+   "level": "PASS",
+   "code": "beats",
+   "message": "20 beats cover 10.0s at 0.5 s resolution"
+  },
+  {
+   "level": "PASS",
+   "code": "impacts",
+   "message": "ranked: 1:hero@8.5, 2:reveal@2.0, 3:control_cut@6.5"
+  }
+ ]
+}

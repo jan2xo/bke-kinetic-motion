@@ -1,0 +1,99 @@
+{
+  "schema": "bke-motion-timeline/1",
+  "title": "Render Dock by BKE - 10 s promo (v1, AS BUILT)",
+  "note": "Reconstructed from the v1 render.py/audio.py AFTER the fact, to serve as a regression fixture. v1 predates the manifest: its code hardcodes these times. This file documents what v1 intended, so QA can show where v1 fell short (dead hold 2.8-3.9 s, chaos sag, unsynced random glitch sounds).",
+  "duration": 10.0, "fps": 30, "bpm": 120, "tolerance_ms": 34,
+  "polarity": {"from": "media chaos", "to": "production control",
+               "statement": "Render Dock turns a scattered pile of media into a controlled, synchronized production pipeline."},
+  "vocabulary": {
+    "from": [
+      {"effect": "scatter", "meaning": "files everywhere, no order"},
+      {"effect": "rgb_split", "meaning": "corrupted signal, instability"},
+      {"effect": "jitter", "meaning": "nervous, uncontrolled"},
+      {"effect": "rotation_drift", "meaning": "nothing is aligned"},
+      {"effect": "shake_build", "meaning": "pressure rising toward breaking point"},
+      {"effect": "tracking_collapse", "meaning": "too big and loose, forcing itself together"}
+    ],
+    "to": [
+      {"effect": "grid_snap", "meaning": "order arrives instantly"},
+      {"effect": "mask_rise", "meaning": "precise, editorial, from a fixed baseline"},
+      {"effect": "stagger", "meaning": "sequence, process, intent"},
+      {"effect": "gold_wave", "meaning": "the system takes ownership"},
+      {"effect": "drag_arc", "meaning": "direct manipulation, the user is in control"},
+      {"effect": "progress_fill", "meaning": "work getting done"},
+      {"effect": "check_pop", "meaning": "confirmation"},
+      {"effect": "fixed_playhead", "meaning": "control = a fixed reference everything flows past"},
+      {"effect": "focus_pull", "meaning": "calm confidence, coming into focus"},
+      {"effect": "centre_out_reveal", "meaning": "symmetry = resolved"},
+      {"effect": "shine_sweep", "meaning": "polish, premium finish"}
+    ],
+    "neutral": [
+      {"effect": "flash", "meaning": "impact weight scaled to narrative rank"},
+      {"effect": "whip_pan", "meaning": "lateral move = next topic, same level"},
+      {"effect": "zoom_through", "meaning": "go inside the system"},
+      {"effect": "grid_drift", "meaning": "ambient life"},
+      {"effect": "particles", "meaning": "ambient life, celebration"},
+      {"effect": "grain_vignette", "meaning": "cinematic finish"}
+    ]
+  },
+  "accent": {"color": "#FFC228", "budget_pct": 10,
+             "reserved_for": ["the question mark", "DOCK", "full stops", "CONTROL", "progress", "done state", "playhead", "brand"]},
+  "easing": {"arrive": "expo_out 0.45-0.6 s", "depart": "expo_in", "transform": "cubic_in_out",
+             "pop": "back_out (nodes, checks, logo only)", "mechanical": "linear (track scroll, particles, spinner)",
+             "pop_targets": "nodes, checkmarks, logo"},
+  "stagger": {"chars_ms": 35, "items_ms": 140, "nodes_ms": 70, "rule": "one element owns each moment; only the 2.0 s snap is deliberately simultaneous"},
+  "scenes": [
+    {"id": "chaos",   "start": 0.0, "end": 2.0, "text": "MEDIA CHAOS?",            "pole": "from", "energy": "high",   "density": 32, "emotion": "pressure building"},
+    {"id": "reveal",  "start": 2.0, "end": 4.0, "text": "MEET RENDER DOCK",        "pole": "to",   "energy": "medium", "density": 32, "emotion": "relief, then a name"},
+    {"id": "demo",    "start": 4.0, "end": 6.5, "text": "DRAG. ORGANIZE. RENDER.", "pole": "to",   "energy": "medium", "density": 14, "emotion": "competence"},
+    {"id": "control", "start": 6.5, "end": 8.5, "text": "PRODUCTION CONTROL",      "pole": "to",   "energy": "medium", "density": 11, "emotion": "machine-like confidence"},
+    {"id": "hero",    "start": 8.5, "end": 10.0, "text": "RENDER DOCK / By BKE",   "pole": "to",   "energy": "medium", "density": 3,  "emotion": "payoff, then rest"}
+  ],
+  "beats": [
+    {"t": 0.0, "dominant": "32 media cards burst outward from centre", "supporting": null, "ambient": "grid drift + grain", "audio": "dark pad, heartbeat kick", "effects": ["scatter", "rotation_drift"], "read_first": "the burst"},
+    {"t": 0.5, "dominant": "MEDIA CHAOS? slams in, tracking collapses", "supporting": "RGB split decays", "ambient": "cards drift", "audio": "glitch tick 0.32, riser", "effects": ["tracking_collapse", "rgb_split", "jitter"], "read_first": "MEDIA CHAOS?"},
+    {"t": 1.0, "dominant": "cards drift and spin", "supporting": "glitch burst 1.2", "ambient": "grid drift", "audio": "heartbeat, riser", "effects": ["rotation_drift", "rgb_split", "shake_build"], "read_first": "MEDIA CHAOS?"},
+    {"t": 1.5, "dominant": "cards accelerate outward, shake builds", "supporting": "glitch burst 1.62", "ambient": "grid drift", "audio": "second riser", "effects": ["shake_build", "rgb_split"], "read_first": "MEDIA CHAOS?"},
+    {"t": 2.0, "dominant": "all cards snap to an 8x4 grid", "supporting": "flash 0.5", "ambient": "grid", "audio": "IMPACT", "effects": ["grid_snap", "flash"], "read_first": "the grid"},
+    {"t": 2.5, "dominant": "RENDER DOCK rises per character from a mask", "supporting": "gold rule draws", "ambient": "cards dim to 0.32", "audio": "groove starts", "effects": ["mask_rise", "stagger"], "read_first": "RENDER DOCK"},
+    {"t": 3.0, "dominant": "gold edge wave sweeps the grid", "supporting": null, "ambient": "grid drift", "audio": "groove", "effects": ["gold_wave"], "read_first": "RENDER DOCK"},
+    {"t": 3.5, "dominant": "hold on title (v1: almost nothing moves)", "supporting": "whip pan out 3.86", "ambient": "grain", "audio": "whoosh 3.75", "effects": ["whip_pan"], "read_first": "RENDER DOCK"},
+    {"t": 4.0, "dominant": "UI panel rises, cursor approaches a card", "supporting": "DRAG. rises", "ambient": "grid drift", "audio": "hats join", "effects": ["mask_rise"], "read_first": "DRAG."},
+    {"t": 4.5, "dominant": "card lifted and carried in an arc", "supporting": "ORGANIZE. rises", "ambient": "drop zone heats", "audio": "tick 4.45", "effects": ["drag_arc", "mask_rise"], "read_first": "the card"},
+    {"t": 5.0, "dominant": "card drops, queue rows slide in", "supporting": "bin reflows", "ambient": "grid drift", "audio": "ticks 5.05-5.46", "effects": ["stagger"], "read_first": "the queue"},
+    {"t": 5.5, "dominant": "progress bars fill", "supporting": "RENDER. rises", "ambient": "spinners", "audio": "groove", "effects": ["progress_fill", "mask_rise"], "read_first": "RENDER."},
+    {"t": 6.0, "dominant": "progress completes with check pops", "supporting": "zoom-through out 6.36", "ambient": "spinners", "audio": "whoosh 6.2", "effects": ["progress_fill", "check_pop", "zoom_through"], "read_first": "checks"},
+    {"t": 6.5, "dominant": "tracks scroll past a fixed playhead", "supporting": "PRODUCTION CONTROL focus-pulls in", "ambient": "fast grid", "audio": "downbeat", "effects": ["fixed_playhead", "focus_pull", "flash"], "read_first": "PRODUCTION CONTROL"},
+    {"t": 7.0, "dominant": "pipeline nodes light in sequence", "supporting": "gold line fills", "ambient": "tracks scroll", "audio": "groove", "effects": ["stagger", "progress_fill"], "read_first": "CONTROL"},
+    {"t": 7.5, "dominant": "tracks scroll, clips turn gold at playhead", "supporting": null, "ambient": "pulses on line", "audio": "riser 7.6", "effects": ["fixed_playhead"], "read_first": "CONTROL"},
+    {"t": 8.0, "dominant": "zoom and flash ramp into the hero", "supporting": null, "ambient": "tracks", "audio": "riser peaks", "effects": ["zoom_through", "flash"], "read_first": "CONTROL"},
+    {"t": 8.5, "dominant": "flash, logo pops, title reveals centre-out", "supporting": "gold glow blooms", "ambient": "particles", "audio": "FINAL IMPACT + chord", "effects": ["flash", "centre_out_reveal"], "read_first": "RENDER DOCK"},
+    {"t": 9.0, "dominant": "shine sweeps the title", "supporting": "By BKE fades in", "ambient": "particles, slow push-in", "audio": "chord rings", "effects": ["shine_sweep", "particles"], "read_first": "RENDER DOCK"},
+    {"t": 9.5, "dominant": "end card rest", "supporting": null, "ambient": "particles, slow push-in", "audio": "fade", "effects": ["particles"], "read_first": "By BKE"}
+  ],
+  "events": [
+    {"id": "glitch_open",   "t": 0.32, "kind": "accent",     "visual": "headline RGB split peak + 0.18 flash", "audio": "glitch", "sync": "required"},
+    {"id": "glitch_1",      "t": 1.20, "kind": "accent",     "visual": "glitch burst: 9 px RGB split + jitter 1.20-1.30", "audio": "glitch", "sync": "required", "duration": 0.1},
+    {"id": "glitch_2",      "t": 1.62, "kind": "accent",     "visual": "glitch burst: 9 px RGB split + jitter 1.62-1.68", "audio": "glitch", "sync": "required", "duration": 0.06},
+    {"id": "build_riser",   "t": 0.05, "kind": "anticipation", "visual": "camera shake builds 1.0-2.0", "audio": "riser", "sync": "audio_only", "duration": 1.95},
+    {"id": "late_riser",    "t": 1.45, "kind": "anticipation", "visual": "cards accelerate outward 1.75-2.0", "audio": "riser", "sync": "audio_only", "duration": 0.6},
+    {"id": "reveal",        "t": 2.00, "kind": "impact",     "visual": "cards snap to grid + 0.5 flash", "audio": "impact", "rank": 2, "sync": "required", "anticipation": "cards accelerate outward, shake builds, riser"},
+    {"id": "text_meet",     "t": 2.10, "kind": "text",       "visual": "MEET slides up in mask; RENDER DOCK rises 2.22+", "sync": "visual_only"},
+    {"id": "whip",          "t": 3.86, "kind": "transition", "visual": "whip pan out (1400 px + 90 px blur)", "audio": "whoosh", "audio_offset": -0.11, "sync": "required"},
+    {"id": "card_pickup",   "t": 4.45, "kind": "accent",     "visual": "cursor presses, card lifts with gold edge", "audio": "glitch", "sync": "required"},
+    {"id": "card_drop",     "t": 5.05, "kind": "accent",     "visual": "card lands in queue row 1", "audio": "glitch", "sync": "required"},
+    {"id": "row_2",         "t": 5.18, "kind": "accent",     "visual": "queue row 2 lands", "audio": "glitch", "sync": "required"},
+    {"id": "row_3",         "t": 5.32, "kind": "accent",     "visual": "queue row 3 lands", "audio": "glitch", "sync": "required"},
+    {"id": "row_4",         "t": 5.46, "kind": "accent",     "visual": "queue row 4 lands", "audio": "glitch", "sync": "required"},
+    {"id": "zoom_through",  "t": 6.36, "kind": "transition", "visual": "zoom 1 -> 1.35 + darken", "audio": "whoosh", "audio_offset": -0.16, "sync": "required"},
+    {"id": "control_cut",   "t": 6.50, "kind": "impact",     "visual": "zoom-in 1.18 -> 1.0 + 0.35 flash", "audio": "kick", "rank": 3, "sync": "required", "anticipation": "zoom-through + whoosh"},
+    {"id": "hero_riser",    "t": 7.60, "kind": "anticipation", "visual": "zoom + flash ramp 8.38-8.5", "audio": "riser", "sync": "audio_only", "duration": 0.9},
+    {"id": "hero",          "t": 8.50, "kind": "impact",     "visual": "0.85 flash, logo pop, centre-out title", "audio": "impact", "rank": 1, "sync": "required", "anticipation": "riser 7.6 + zoom/flash ramp"},
+    {"id": "text_hero",     "t": 8.68, "kind": "text",       "visual": "RENDER DOCK centre-out reveal", "sync": "visual_only"}
+  ],
+  "quiet": [
+    {"start": 9.6, "end": 10.0, "reason": "end card rest"}
+  ],
+  "audio_bed": ["kick", "hat", "clap", "pad", "pluck", "bass"],
+  "motion_qa": {"style": "kinetic"}
+}

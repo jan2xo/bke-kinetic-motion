@@ -1,0 +1,70 @@
+{
+  "schema": "bke-motion-timeline/1",
+  "title": "promo_template - 6 s chaos -> product -> hero",
+  "duration": 6.0, "fps": 30, "bpm": 120, "tolerance_ms": 34,
+  "polarity": {"from": "too many files", "to": "one product in control",
+               "statement": "The product turns a mess of files into one calm, branded answer."},
+  "vocabulary": {
+    "from": [
+      {"effect": "scatter", "meaning": "files everywhere"},
+      {"effect": "rotation_drift", "meaning": "nothing aligned"},
+      {"effect": "rgb_split", "meaning": "corrupted, unstable signal"},
+      {"effect": "jitter", "meaning": "nervous"},
+      {"effect": "tracking_collapse", "meaning": "loose, forcing itself together"}
+    ],
+    "to": [
+      {"effect": "grid_snap", "meaning": "order arrives instantly"},
+      {"effect": "mask_rise", "meaning": "precise, editorial"},
+      {"effect": "stagger", "meaning": "sequence and intent"},
+      {"effect": "grid_breathe", "meaning": "the system is alive and in rhythm"},
+      {"effect": "centre_out_reveal", "meaning": "symmetry = resolved"},
+      {"effect": "shine_sweep", "meaning": "premium finish"}
+    ],
+    "neutral": [
+      {"effect": "flash", "meaning": "impact weight by rank"},
+      {"effect": "zoom_through", "meaning": "go deeper, to the payoff"},
+      {"effect": "grid_drift", "meaning": "ambient life"},
+      {"effect": "particles", "meaning": "ambient celebration"}
+    ]
+  },
+  "accent": {"color": "#FFC228", "budget_pct": 10, "reserved_for": ["final punctuation", "product word", "rule", "brand"]},
+  "easing": {"arrive": "expo_out 0.45-0.6 s", "depart": "expo_in", "transform": "cubic_in_out",
+             "pop": "back_out", "pop_targets": "logo, small UI only", "mechanical": "linear (particles, grid drift)"},
+  "stagger": {"chars_ms": 35, "items_ms": 120, "rule": "one element owns each moment"},
+  "music": {"groove_from": 2.0, "hats_from": 3.0},
+  "scenes": [
+    {"id": "chaos",  "start": 0.0, "end": 2.0, "text": "TOO MANY FILES?", "pole": "from", "energy": "high",   "density": 24, "emotion": "pressure"},
+    {"id": "reveal", "start": 2.0, "end": 4.0, "text": "INTRODUCING YOUR PRODUCT", "pole": "to", "energy": "medium", "density": 24, "emotion": "relief, a name"},
+    {"id": "hero",   "start": 4.0, "end": 6.0, "text": "YOUR PRODUCT / By YOUR BRAND", "pole": "to", "energy": "medium", "density": 3, "emotion": "payoff, then rest"}
+  ],
+  "beats": [
+    {"t": 0.0, "dominant": "24 cards burst outward", "supporting": null, "ambient": "grid drift + grain", "audio": "pad, heartbeat", "effects": ["scatter", "rotation_drift"], "read_first": "burst"},
+    {"t": 0.5, "dominant": "headline slams in, tracking collapses", "supporting": "RGB split decays", "ambient": "cards drift", "audio": "glitch 0.40, riser", "effects": ["tracking_collapse", "rgb_split", "jitter"], "read_first": "TOO MANY FILES?"},
+    {"t": 1.0, "dominant": "cards drift and spin", "supporting": "glitch burst 1.15", "ambient": "grid drift", "audio": "glitch", "effects": ["rotation_drift", "rgb_split"], "read_first": "headline"},
+    {"t": 1.5, "dominant": "glitch burst 1.6, headline exits expo-in", "supporting": null, "ambient": "cards drift", "audio": "glitch, riser peaks", "effects": ["rgb_split", "jitter"], "read_first": "headline"},
+    {"t": 2.0, "dominant": "cards snap to the grid", "supporting": "flash", "ambient": "grid", "audio": "IMPACT", "effects": ["grid_snap", "flash"], "read_first": "grid"},
+    {"t": 2.5, "dominant": "product name rises per character", "supporting": "rule draws", "ambient": "cards dim", "audio": "groove", "effects": ["mask_rise", "stagger"], "read_first": "YOUR PRODUCT"},
+    {"t": 3.0, "dominant": "grid breathes on the beat", "supporting": null, "ambient": "grid drift", "audio": "groove + hats", "effects": ["grid_breathe"], "read_first": "YOUR PRODUCT"},
+    {"t": 3.5, "dominant": "grid breathes, zoom-through out", "supporting": null, "ambient": "grid drift", "audio": "whoosh", "effects": ["grid_breathe", "zoom_through"], "read_first": "YOUR PRODUCT"},
+    {"t": 4.0, "dominant": "flash, title reveals centre-out", "supporting": "gold glow", "ambient": "particles", "audio": "FINAL IMPACT", "effects": ["flash", "centre_out_reveal"], "read_first": "YOUR PRODUCT"},
+    {"t": 4.5, "dominant": "shine sweeps the title", "supporting": "rule + subtitle", "ambient": "particles", "audio": "chord", "effects": ["shine_sweep", "particles"], "read_first": "YOUR PRODUCT"},
+    {"t": 5.0, "dominant": "subtitle settles", "supporting": null, "ambient": "particles", "audio": "chord rings", "effects": ["particles"], "read_first": "By YOUR BRAND"},
+    {"t": 5.5, "dominant": "end card rest", "supporting": null, "ambient": "particles", "audio": "fade", "effects": ["particles"], "read_first": "brand"}
+  ],
+  "events": [
+    {"id": "build_riser", "t": 0.05, "kind": "anticipation", "visual": "cards drift outward, headline tension", "audio": "riser", "sync": "audio_only", "duration": 1.9},
+    {"id": "glitch_open", "t": 0.40, "kind": "accent", "visual": "headline slam hits hardest (entrance starts 0.30; expo-out peaks ~3 frames later) with 14 px RGB split", "audio": "glitch", "sync": "required", "note": "moved from 0.32 after sync_check VERIFIED measured the visual peak at 0.40 (-84 ms)"},
+    {"id": "glitch_1",    "t": 1.15, "kind": "accent", "visual": "glitch burst: 9 px split + jitter", "audio": "glitch", "sync": "required", "duration": 0.08},
+    {"id": "glitch_2",    "t": 1.60, "kind": "accent", "visual": "glitch burst: 9 px split + jitter", "audio": "glitch", "sync": "required", "duration": 0.06},
+    {"id": "reveal",      "t": 2.00, "kind": "impact", "style": "cut_flash", "visual": "cards snap to grid + 0.5 flash", "audio": "impact", "rank": 2, "sync": "required",
+     "anticipation": "riser + headline exits expo-in with 18 px split"},
+    {"id": "text_reveal", "t": 2.10, "kind": "text", "visual": "INTRODUCING + YOUR PRODUCT rise from mask", "sync": "visual_only"},
+    {"id": "zoom_out",    "t": 3.88, "kind": "transition", "style": "zoom_out", "visual": "zoom-through 1 -> 1.12 + flash ramp", "audio": "whoosh", "audio_offset": -0.16, "sync": "required", "duration": 0.3},
+    {"id": "hero",        "t": 4.00, "kind": "impact", "style": "zoom", "visual": "flash, zoom-in 1.18 -> 1, centre-out title", "audio": "impact", "rank": 1, "sync": "required",
+     "anticipation": "zoom-through out + whoosh"},
+    {"id": "text_hero",   "t": 4.18, "kind": "reveal", "visual": "title centre-out, shine 4.75-5.25", "sync": "visual_only"}
+  ],
+  "quiet": [{"start": 5.1, "end": 6.0, "reason": "end card rest: let the brand read"}],
+  "audio_bed": ["kick", "hat", "clap", "pad", "pluck", "bass"],
+  "motion_qa": {"style": "kinetic"}
+}

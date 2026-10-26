@@ -1,0 +1,9 @@
+# start_seconds | text | optional tempo
+0.35 | Media chaos?
+2.20 | Meet Render Dock.
+4.15 | Drag.
+4.80 | Organize.
+5.50 | Render.
+6.60 | Production control.
+8.52 | Render Dock. | 1.1
+9.17 | by B K E. | 1.2

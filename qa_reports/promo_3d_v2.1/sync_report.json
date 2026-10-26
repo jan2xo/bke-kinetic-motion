@@ -1,0 +1,170 @@
+{
+ "tool": "bke-kinetic-motion/sync_check",
+ "version": "2.0.0",
+ "result": "PASS",
+ "declared": {
+  "checks": [
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "cam_dolly @ 0.05s <- 'riser' +0 ms",
+    "event": "cam_dolly"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "snap @ 2.50s <- 'impact' +0 ms",
+    "event": "snap"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "rim_sweep @ 3.00s <- 'tick' +0 ms",
+    "event": "rim_sweep"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "recede @ 3.88s <- 'whoosh' +0 ms",
+    "event": "recede"
+   },
+   {
+    "level": "PASS",
+    "code": "synced",
+    "message": "title @ 4.00s <- 'impact' +0 ms",
+    "event": "title"
+   }
+  ],
+  "matches": [
+   {
+    "event": "cam_dolly",
+    "t": 0.05,
+    "expected": 0.05,
+    "scheduled": 0.05,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "snap",
+    "t": 2.5,
+    "expected": 2.5,
+    "scheduled": 2.5,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "rim_sweep",
+    "t": 3.0,
+    "expected": 3.0,
+    "scheduled": 3.0,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "recede",
+    "t": 3.88,
+    "expected": 3.72,
+    "scheduled": 3.72,
+    "offset_ms": 0.0
+   },
+   {
+    "event": "title",
+    "t": 4.0,
+    "expected": 4.0,
+    "scheduled": 4.0,
+    "offset_ms": 0.0
+   }
+  ]
+ },
+ "verified": {
+  "checks": [
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "cam_dolly @ 0.05s: 'riser' is a swell, so its timing can't be measured from onsets",
+    "event": "cam_dolly"
+   },
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "snap: sound -8 ms vs picture (expected +0)",
+    "event": "snap"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "rim_sweep @ 3.00s: visual change not distinct (salience 0.8)",
+    "event": "rim_sweep"
+   },
+   {
+    "level": "INFO",
+    "code": "not_measurable",
+    "message": "recede @ 3.88s: 'whoosh' is a swell, so its timing can't be measured from onsets",
+    "event": "recede"
+   },
+   {
+    "level": "PASS",
+    "code": "verified",
+    "message": "title: sound -4 ms vs picture (expected +0)",
+    "event": "title"
+   }
+  ],
+  "events": [
+   {
+    "event": "cam_dolly",
+    "t": 0.05,
+    "kind": "camera",
+    "expected_audio": 0.05,
+    "audio_note": "'riser' is a swell; onset timing is not meaningful",
+    "visual_peak": 0.167,
+    "visual_salience": 0.62,
+    "status": "not_measurable"
+   },
+   {
+    "event": "snap",
+    "t": 2.5,
+    "kind": "impact",
+    "expected_audio": 2.5,
+    "audio_onset": 2.492,
+    "audio_salience": 5.21,
+    "visual_peak": 2.5,
+    "visual_salience": 26.72,
+    "av_offset_ms": -8.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   },
+   {
+    "event": "rim_sweep",
+    "t": 3.0,
+    "kind": "accent",
+    "expected_audio": 3.0,
+    "audio_onset": 2.992,
+    "audio_salience": 5.55,
+    "visual_peak": 2.9,
+    "visual_salience": 0.79,
+    "status": "not_measurable"
+   },
+   {
+    "event": "recede",
+    "t": 3.88,
+    "kind": "transition",
+    "expected_audio": 3.72,
+    "audio_note": "'whoosh' is a swell; onset timing is not meaningful",
+    "visual_peak": 3.967,
+    "visual_salience": 10.12,
+    "status": "not_measurable"
+   },
+   {
+    "event": "title",
+    "t": 4.0,
+    "kind": "impact",
+    "expected_audio": 4.0,
+    "audio_onset": 3.996,
+    "audio_salience": 7.59,
+    "visual_peak": 4.0,
+    "visual_salience": 75.43,
+    "av_offset_ms": -4.0,
+    "expected_offset_ms": 0.0,
+    "status": "verified"
+   }
+  ]
+ },
+ "note": "DECLARED proves the manifest and the scheduled cues agree. VERIFIED measures the rendered file; \"not_measurable\" means the event did not stand out enough to time, which is not a pass."
+}

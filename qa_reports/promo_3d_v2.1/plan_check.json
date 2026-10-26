@@ -1,0 +1,25 @@
+{
+ "result": "PASS",
+ "items": [
+  {
+   "level": "PASS",
+   "code": "polarity",
+   "message": "work scattered in every direction and depth -> one flat, ordered system"
+  },
+  {
+   "level": "PASS",
+   "code": "beats",
+   "message": "12 beats cover 6.0s at 0.5 s resolution"
+  },
+  {
+   "level": "PASS",
+   "code": "impacts",
+   "message": "ranked: 1:title@4.0, 2:snap@2.5"
+  },
+  {
+   "level": "PASS",
+   "code": "3d",
+   "message": "3D plan: 4 moves, 1 camera move(s), lens 40 mm"
+  }
+ ]
+}

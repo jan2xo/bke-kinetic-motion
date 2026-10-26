@@ -1,0 +1,5 @@
+out/
+frames/
+__pycache__/
+*.pyc
+stills/

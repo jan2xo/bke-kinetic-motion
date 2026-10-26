@@ -1,0 +1,182 @@
+[
+{
+"t": 0,
+"cue": "pad",
+"gain": 0.1
+},
+{
+"t": 0.0,
+"cue": "kick",
+"gain": 0.35
+},
+{
+"t": 0.05,
+"cue": "riser",
+"gain": 0.12,
+"event_id": "cam_dolly"
+},
+{
+"t": 0.5,
+"cue": "kick",
+"gain": 0.35
+},
+{
+"t": 1.0,
+"cue": "kick",
+"gain": 0.35
+},
+{
+"t": 1.5,
+"cue": "kick",
+"gain": 0.35
+},
+{
+"t": 2.0,
+"cue": "kick",
+"gain": 0.35
+},
+{
+"t": 2.5,
+"cue": "impact",
+"gain": 0.8,
+"event_id": "snap"
+},
+{
+"t": 2.5,
+"cue": "pad",
+"gain": 0.09
+},
+{
+"t": 2.5,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 2.5,
+"cue": "kick",
+"gain": 0.55
+},
+{
+"t": 2.75,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 3.0,
+"cue": "tick",
+"gain": 0.07,
+"event_id": "rim_sweep"
+},
+{
+"t": 3.0,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 3.0,
+"cue": "kick",
+"gain": 0.55
+},
+{
+"t": 3.0,
+"cue": "clap",
+"gain": 0.2
+},
+{
+"t": 3.125,
+"cue": "hat",
+"gain": 0.05
+},
+{
+"t": 3.25,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 3.25,
+"cue": "hat",
+"gain": 0.09
+},
+{
+"t": 3.375,
+"cue": "hat",
+"gain": 0.05
+},
+{
+"t": 3.5,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 3.5,
+"cue": "kick",
+"gain": 0.55
+},
+{
+"t": 3.625,
+"cue": "hat",
+"gain": 0.05
+},
+{
+"t": 3.72,
+"cue": "whoosh",
+"gain": 0.14,
+"event_id": "recede"
+},
+{
+"t": 3.75,
+"cue": "bass",
+"gain": 0.22
+},
+{
+"t": 3.75,
+"cue": "hat",
+"gain": 0.09
+},
+{
+"t": 3.875,
+"cue": "hat",
+"gain": 0.05
+},
+{
+"t": 4.0,
+"cue": "impact",
+"gain": 1.0,
+"event_id": "title"
+},
+{
+"t": 4.0,
+"cue": "pad",
+"gain": 0.16
+},
+{
+"t": 4.05,
+"cue": "pluck",
+"gain": 0.06
+},
+{
+"t": 4.17,
+"cue": "pluck",
+"gain": 0.06
+},
+{
+"t": 4.29,
+"cue": "pluck",
+"gain": 0.06
+},
+{
+"t": 4.41,
+"cue": "pluck",
+"gain": 0.06
+},
+{
+"t": 4.53,
+"cue": "pluck",
+"gain": 0.06
+},
+{
+"t": 4.65,
+"cue": "pluck",
+"gain": 0.06
+}
+]
