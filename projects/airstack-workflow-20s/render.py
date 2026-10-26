@@ -169,8 +169,16 @@ def cluster(t):
     converge=M.eio(M.prog(t,TIMES['snap']-.20,TIMES['cam_flow']-.25))
     for i,s in enumerate(SCAT):
         emerge=M.eo(M.prog(t,s['delay']-.16,s['delay']+.55))
-        drift=np.array((20*math.sin(t*1.3+i),12*math.sin(t*.8+i),0))
-        if i==0 and t>=TIMES['one_panel']:drift*=0
+        # Manual preparations keep cycling. The SOURCE panel alone freezes
+        # at the turning point, making the halt and its connection readable.
+        drift=np.array((65*math.sin(t*2.3+i*.71),
+                        25*math.sin(t*3.2+i),36*math.sin(t*1.6+i*.8)))
+        if i==0 and t>=TIMES['one_panel']:
+            drift*=0
+        elif i>0 and TIMES['cam_push']<=t<TIMES['snap']:
+            rep=math.sin(2*math.pi*1.6*(t-TIMES['cam_push'])+i*.5)
+            drift+=np.array((95*rep,28*math.sin(2*math.pi*1.6*t+i),
+                             32*math.cos(2*math.pi*1.6*t+i)))
         scattered=s['pos']+drift*(1-converge)
         # First all copies identify ONE source; next the six meaningful
         # tasks enter the stable workflow in a rhythmic sequence.
@@ -180,6 +188,14 @@ def cluster(t):
                          TIMES['cam_flow']+.60+i*.50)) if i<6 else 0.
         anchored=np.array(GRID[i%6]['pos'],float)
         pos=pre*(1-dock)+anchored*dock
+        if i<6:
+            # Spatial confirmation: changing data lifts its existing panel,
+            # then an automation impulse travels from one operation to next.
+            refresh_peak=TIMES['refresh']+i*.17
+            activate_peak=TIMES['automate']+i*.28
+            pos=pos.copy()
+            pos[2]+=105*math.exp(-((t-refresh_peak)/.22)**2)
+            pos[2]+=135*math.exp(-((t-activate_peak)/.24)**2)
         rot=s['rot']*(1-converge)*(1-dock)
         if i<6:
             alpha=emerge*(1-M.eio(M.prog(t,TIMES['refresh']-.2+i*.14,TIMES['refresh']+.32+i*.14)))
