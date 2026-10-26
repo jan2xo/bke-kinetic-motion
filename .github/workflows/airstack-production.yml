@@ -1,0 +1,108 @@
+name: AIR STACK production verification (temporary PR-only)
+
+# Temporary production trigger isolated to this PR branch.
+# Do not merge this workflow to main. Remove it after gate-approved delivery.
+on:
+  push:
+    branches:
+      - feat/airstack-workflow-20s-qa
+    paths:
+      - '.github/workflows/airstack-production.yml'
+      - 'projects/airstack-workflow-20s/**'
+      - 'scripts/music_synth.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: airstack-production-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: Engine unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Static gate / production plan
+        run: |
+          python scripts/timeline.py check projects/airstack-workflow-20s/timeline.json
+          python scripts/gate.py static projects/airstack-workflow-20s/render.py projects/airstack-workflow-20s/timeline.json --name airstack-workflow-20s
+
+  preview:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: BKE v2.2 preview / full gate
+        run: python scripts/produce.py airstack-workflow-20s --preview --out out/airstack-preview
+      - name: Upload gate-approved preview
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: airstack-preview-qa-${{ github.run_number }}
+          path: |
+            out/airstack-preview/*.mp4
+            out/airstack-preview/gate_summary.md
+            out/airstack-preview/gate_report.json
+            out/airstack-preview/qa/
+            out/airstack-preview/visual_log.json
+            out/airstack-preview/audio_cues.json
+            out/airstack-preview/lint3d.txt
+            out/airstack-preview/validate.txt
+          retention-days: 14
+      - name: Upload failed preview QA (never a deliverable)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: airstack-preview-FAILED-qa-${{ github.run_number }}
+          path: |
+            out/airstack-preview/gate_summary.md
+            out/airstack-preview/gate_report.json
+            out/airstack-preview/qa/
+            out/airstack-preview/produce_log.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  final:
+    needs: preview
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - name: BKE v2.2 FINAL 1920x1080 60 FPS / full gate
+        run: python scripts/produce.py airstack-workflow-20s --out out/airstack-final
+      - name: Deliver MP4 and reproducibility QA (only if PASS)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AIR-STACK-THE-WORKFLOW-20s-FINAL-${{ github.run_number }}
+          path: |
+            out/airstack-final/*.mp4
+            out/airstack-final/gate_summary.md
+            out/airstack-final/gate_report.json
+            out/airstack-final/qa/
+            out/airstack-final/visual_log.json
+            out/airstack-final/audio_cues.json
+            out/airstack-final/lint3d.txt
+            out/airstack-final/validate.txt
+          retention-days: 30
+      - name: Upload failed final QA (no finished video)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AIR-STACK-FINAL-FAILED-qa-${{ github.run_number }}
+          path: |
+            out/airstack-final/gate_summary.md
+            out/airstack-final/gate_report.json
+            out/airstack-final/qa/
+            out/airstack-final/produce_log.json
+          if-no-files-found: ignore
+          retention-days: 14
