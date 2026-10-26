@@ -10,7 +10,6 @@ on:
         default: 3d-demo
         options:
           - 3d-demo
-          - renderdock-v1
       preview:
         description: Use low-resolution 3D preview (3d-demo only)
         type: boolean
@@ -20,7 +19,6 @@ on:
     paths:
       - 'templates/**'
       - 'scripts/**'
-      - 'examples/**'
       - 'fonts/**'
       - '.github/workflows/render.yml'
 
@@ -55,7 +53,6 @@ jobs:
           test -f scripts/music_synth.py
           test -f scripts/sync_check.py
           test -f templates/promo_3d_template.py
-          test -f examples/render_dock/render.py
           test -f fonts/Montserrat-Black.ttf
       - name: Unit tests
         run: python -m unittest discover -s tests -v
@@ -65,22 +62,15 @@ jobs:
           set -euo pipefail
           mkdir -p out
           cd out
-          if [ "$PROJECT" = "3d-demo" ]; then
-            MANIFEST=../templates/timeline_3d.json
-            python ../scripts/timeline.py check "$MANIFEST"
-            if [ "$PREVIEW" = "1" ]; then
-              python ../templates/promo_3d_template.py render --preview
-            else
-              python ../templates/promo_3d_template.py render
-            fi
-            python ../templates/promo_3d_template.py lint | tee lint3d.txt
-            DURATION=6
+          MANIFEST=../templates/timeline_3d.json
+          python ../scripts/timeline.py check "$MANIFEST"
+          if [ "$PREVIEW" = "1" ]; then
+            python ../templates/promo_3d_template.py render --preview
           else
-            MANIFEST=../examples/render_dock/timeline.json
-            python ../scripts/timeline.py check "$MANIFEST"
-            python ../examples/render_dock/render.py
-            DURATION=10
+            python ../templates/promo_3d_template.py render
           fi
+          python ../templates/promo_3d_template.py lint | tee lint3d.txt
+          DURATION=6
           python ../scripts/music_synth.py --manifest "$MANIFEST" --out music.wav --cue-log audio_cues.json
           bash ../scripts/encode.sh frames music.wav promo.mp4 "$DURATION" 30
           python ../scripts/validate.py promo.mp4 "$DURATION"
