@@ -1032,6 +1032,11 @@
       "reason": "Negative space before the intelligent connection propagates"
     },
     {
+      "start": 17.85,
+      "end": 18.48,
+      "reason": "Deliberate static AIR STACK reading hold before the single planned cyan light sweep; no camera movement"
+    },
+    {
       "start": 18.9,
       "end": 20,
       "reason": "Locked final wordmark and tagline; no camera or element drift"
