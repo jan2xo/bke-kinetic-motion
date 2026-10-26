@@ -45,6 +45,17 @@ def pad(ms, d, bright=7):
         for det in (-.08, .08):
             for h in range(1, bright + 1): out += np.sin(2 * np.pi * note(m + det) * h * t + h) / h * .85 ** h
     return out * np.minimum(1, t / .08) * np.minimum(1, (d - t) / .15) / len(ms)
+def strings(ms, d):
+    """Deterministic softly bowed synth-string layer, no external samples."""
+    t = tt(d); out = np.zeros(len(t))
+    env = (1 - np.exp(-t * 7)) * np.minimum(1, np.maximum(0, d - t) / .28)
+    for m in ms:
+        vibrato = .0025 * np.sin(2 * np.pi * 5.1 * t)
+        phase = 2 * np.pi * note(m) * np.cumsum(1 + vibrato) / SR
+        for h in range(1, 7):
+            out += (np.sin(h * phase + h * .24) / h**1.55) * (.91**h)
+    return out * env / max(1, len(ms))
+
 def pluck(m, d=.22):
     t = tt(d); return sum(np.sin(2 * np.pi * note(m) * h * t) / h * np.exp(-t * (14 + h * 9)) for h in range(1, 9))
 def bass(m, d):
@@ -142,6 +153,20 @@ def main():
         k += 1
     add(pad([45, 57, 64, 69, 71, 76], D - last + .05, 9), last, .16, cue='pad')
     for j, m in enumerate([81, 76, 72, 69, 76, 81]): add(pluck(m, .6), last + .05 + j * .12, .06, (-1) ** j * .4, cue='pluck')
+    # Optional score direction is specified inside the shared timeline.
+    # Additional warm string harmonics enrich the original synth material.
+    if T:
+        score = T.data.get('music') or {}
+        if score.get('strings_from') is not None:
+            start=float(score['strings_from'])
+            ti=start
+            j=0
+            while ti < last - .15:
+                d=min(bar,last-ti)
+                chord=[(57,60,64),(53,57,60),(60,64,67),(55,59,62)][j%4]
+                add(strings(chord,d+.2),ti,.037,cue='strings')
+                ti+=d
+                j+=1
     if a.cue_log:
         with open(a.cue_log, 'w') as f: json.dump(sorted(LOG, key=lambda c: c['t']), f, indent=0)
     # convolution reverb + master
@@ -151,6 +176,19 @@ def main():
         return x + np.fft.irfft(np.fft.rfft(x, M_) * np.fft.rfft(ir, M_), M_)[:len(x)] * .18
     st = np.stack([verb(L, 3), verb(R, 4)], 1); st = np.tanh(st * 1.2) / 1.2
     t = np.arange(n) / SR; st *= (np.minimum(1, (D - t) / .45) * np.minimum(1, t / .01))[:, None]
+    if T:
+        # Narrative vacuum is a musical decision, not a random SFX mute.
+        # Apply after reverb so the pause is genuinely negative space.
+        for window in (T.data.get('music') or {}).get('vacuum', []):
+            a0,b0=map(float,window)
+            gate=np.ones(n,dtype=np.float32)
+            fade=.035
+            falling=(t>=a0-fade)&(t<a0)
+            gate[falling]=np.maximum(0,(a0-t[falling])/fade)
+            gate[(t>=a0)&(t<=b0)]=0
+            rising=(t>b0)&(t<b0+fade)
+            gate[rising]=np.minimum(1,(t[rising]-b0)/fade)
+            st*=gate[:,None]
     st = st / np.max(np.abs(st)) * .89
     with wave.open(a.out, 'wb') as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((st * 32767).astype(np.int16).tobytes())
