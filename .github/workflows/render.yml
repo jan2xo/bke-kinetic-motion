@@ -1,0 +1,103 @@
+name: Render Motion
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Production template
+        type: choice
+        required: true
+        default: 3d-demo
+        options:
+          - 3d-demo
+          - renderdock-v1
+      preview:
+        description: Use low-resolution 3D preview (3d-demo only)
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - 'templates/**'
+      - 'scripts/**'
+      - 'examples/**'
+      - 'fonts/**'
+      - '.github/workflows/render.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-${{ github.ref }}-${{ inputs.project || '3d-demo' }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      PROJECT: ${{ inputs.project || '3d-demo' }}
+      PREVIEW: ${{ inputs.preview == true && '1' || '0' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          python -m pip install numpy pillow
+      - name: Verify complete engine is present
+        run: |
+          test -f SKILL.md
+          test -f scripts/timeline.py
+          test -f scripts/music_synth.py
+          test -f scripts/sync_check.py
+          test -f templates/promo_3d_template.py
+          test -f examples/render_dock/render.py
+          test -f fonts/Montserrat-Black.ttf
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Render, synthesize and encode
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out
+          cd out
+          if [ "$PROJECT" = "3d-demo" ]; then
+            MANIFEST=../templates/timeline_3d.json
+            python ../scripts/timeline.py check "$MANIFEST"
+            if [ "$PREVIEW" = "1" ]; then
+              python ../templates/promo_3d_template.py render --preview
+            else
+              python ../templates/promo_3d_template.py render
+            fi
+            python ../templates/promo_3d_template.py lint | tee lint3d.txt
+            DURATION=6
+          else
+            MANIFEST=../examples/render_dock/timeline.json
+            python ../scripts/timeline.py check "$MANIFEST"
+            python ../examples/render_dock/render.py
+            DURATION=10
+          fi
+          python ../scripts/music_synth.py --manifest "$MANIFEST" --out music.wav --cue-log audio_cues.json
+          bash ../scripts/encode.sh frames music.wav promo.mp4 "$DURATION" 30
+          python ../scripts/validate.py promo.mp4 "$DURATION"
+          python ../scripts/motion_energy.py promo.mp4 --manifest "$MANIFEST" --out qa
+          python ../scripts/sync_check.py "$MANIFEST" --audio-log audio_cues.json --visual-log visual_log.json --video promo.mp4 --motion qa/motion_report.json --out qa
+          python ../scripts/preview.py promo.mp4 --manifest "$MANIFEST" --motion qa/motion_report.json --out qa/previews
+      - name: Upload production artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bke-motion-${{ env.PROJECT }}-${{ github.run_number }}
+          path: |
+            out/promo.mp4
+            out/music.wav
+            out/audio_cues.json
+            out/visual_log.json
+            out/qa/
+            out/lint3d.txt
+          if-no-files-found: warn
+          retention-days: 14
