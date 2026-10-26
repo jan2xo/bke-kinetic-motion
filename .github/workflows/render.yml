@@ -72,7 +72,7 @@ jobs:
           [ "${{ inputs.preview }}" = "true" ] && ARGS="$ARGS --preview"
           [ "${{ inputs.strict }}" = "true" ] && ARGS="$ARGS --strict"
           python scripts/produce.py "${{ matrix.project }}" $ARGS --out out/render
-      - name: Upload video (gate passed)
+      - name: "Upload video (gate passed)"
         if: success()
         uses: actions/upload-artifact@v4
         with:
@@ -88,7 +88,7 @@ jobs:
             out/render/lint3d.txt
             out/render/validate.txt
           retention-days: 30
-      - name: Upload QA only (gate failed: no deliverable)
+      - name: "Upload QA only (gate failed, no deliverable)"
         if: failure()
         uses: actions/upload-artifact@v4
         with:
