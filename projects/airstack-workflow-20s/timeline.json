@@ -1,0 +1,1045 @@
+{
+  "schema": "bke-motion-timeline/1",
+  "title": "AIR STACK - THE WORKFLOW / production",
+  "duration": 20,
+  "fps": 60,
+  "bpm": 120,
+  "tolerance_ms": 34,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "polarity": {
+    "from": "isolated repetitive preparation across each broadcast",
+    "to": "one stable workflow reused with fresh production content",
+    "statement": "AIR STACK transforms daily broadcast rebuilding into one connected workflow that can be populated, automated and sent to the existing broadcast output."
+  },
+  "camera3d": {
+    "why_3d": "Distance measures repetitive fragmentation; physically collapsing depth and continuous camera travel express a single reusable pipeline.",
+    "lens_mm": 40,
+    "lights": 1,
+    "key_light": "restrained electric cyan rim from upper left",
+    "max_text_tilt_deg": 20,
+    "dof": "close focus on original, transition to workflow focus",
+    "end_state": "camera completely stationary by 17.5 s"
+  },
+  "vocabulary": {
+    "from": [
+      {
+        "effect": "repetition",
+        "meaning": "Duplicate schedules accumulate as depth and labour"
+      },
+      {
+        "effect": "misalignment",
+        "meaning": "Independent preparation panels drift and rotate"
+      },
+      {
+        "effect": "depth_parallax",
+        "meaning": "Distance reveals how much work is repeated"
+      }
+    ],
+    "to": [
+      {
+        "effect": "connection",
+        "meaning": "One origin links every dependent task"
+      },
+      {
+        "effect": "module_lock",
+        "meaning": "Nodes assemble as a reusable process"
+      },
+      {
+        "effect": "data_refresh",
+        "meaning": "New data travels through unchanged structure"
+      },
+      {
+        "effect": "output_focus",
+        "meaning": "Stable broadcast output remains supported by the workflow"
+      },
+      {
+        "effect": "brand_reveal",
+        "meaning": "Final name inherits the resolved stillness"
+      },
+      {
+        "effect": "alignment",
+        "meaning": "Separated tasks collapse to one system"
+      }
+    ],
+    "neutral": [
+      {
+        "effect": "camera_motion",
+        "meaning": "Motivated camera travel reveals relationships"
+      },
+      {
+        "effect": "type_reveal",
+        "meaning": "Messaging follows the dominant action"
+      },
+      {
+        "effect": "rim_sweep",
+        "meaning": "Meaningful activation light follows a connection"
+      },
+      {
+        "effect": "hold",
+        "meaning": "Deliberate comprehension pause"
+      },
+      {
+        "effect": "flash",
+        "meaning": "Ranked synchronization emphasis"
+      }
+    ]
+  },
+  "accent": {
+    "color": "#49DFFF",
+    "budget_pct": 8,
+    "reserved_for": [
+      "system trace",
+      "active workflow state",
+      "wordmark highlight"
+    ]
+  },
+  "easing": {
+    "arrive": "expo_out",
+    "depart": "expo_in",
+    "transform": "cubic_in_out",
+    "pop": "back_out",
+    "pop_targets": "module confirmation dot",
+    "mechanical": "linear"
+  },
+  "stagger": {
+    "chars_ms": 35,
+    "items_ms": 120,
+    "rule": "Repetition accumulates; workflow locks progress left-to-right on quarter-beat subdivisions"
+  },
+  "music": {
+    "groove_from": 7,
+    "hats_from": 9
+  },
+  "scenes": [
+    {
+      "id": "repetition",
+      "start": 0,
+      "end": 4,
+      "text": "EVERY BROADCAST. THE SAME WORK?",
+      "pole": "from",
+      "energy": "high",
+      "density": 24,
+      "emotion": "expanding manual repetition"
+    },
+    {
+      "id": "connection",
+      "start": 4,
+      "end": 7,
+      "text": "WHAT IF YOU BUILT IT ONCE?",
+      "pole": "to",
+      "energy": "medium",
+      "density": 20,
+      "emotion": "quiet possibility turning into alignment"
+    },
+    {
+      "id": "structure",
+      "start": 7,
+      "end": 11,
+      "text": "BUILD ONCE.",
+      "pole": "to",
+      "energy": "medium",
+      "density": 14,
+      "emotion": "clarity through coherent assembly"
+    },
+    {
+      "id": "automation",
+      "start": 11,
+      "end": 15,
+      "text": "POPULATE. AUTOMATE.",
+      "pole": "to",
+      "energy": "high",
+      "density": 10,
+      "emotion": "system works while input changes"
+    },
+    {
+      "id": "broadcast",
+      "start": 15,
+      "end": 17.5,
+      "text": "BROADCAST.",
+      "pole": "to",
+      "energy": "medium",
+      "density": 5,
+      "emotion": "output certainty"
+    },
+    {
+      "id": "brand",
+      "start": 17.5,
+      "end": 20,
+      "text": "AIR STACK / BUILD ONCE. POPULATE. AUTOMATE. BROADCAST.",
+      "pole": "to",
+      "energy": "rest",
+      "density": 2,
+      "emotion": "confident quiet and memorability"
+    }
+  ],
+  "beats": [
+    {
+      "t": 0,
+      "dominant": "Extreme-close schedule panel updates",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 0.5,
+      "dominant": "Repeated date and name cells stamp",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 1,
+      "dominant": "Camera reveals a second preparation",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 1.5,
+      "dominant": "Lateral track uncovers parallel tasks",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 2,
+      "dominant": "Lower-thirds duplicate deeper in space",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 2.5,
+      "dominant": "Preparation layers keep arriving",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 3,
+      "dominant": "Work stacks behind the original",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 3.5,
+      "dominant": "Several revisions collide in depth",
+      "supporting": "Subtle continued field updates",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "mechanical ticking accumulates",
+      "effects": [
+        "repetition",
+        "misalignment",
+        "depth_parallax",
+        "camera_motion"
+      ],
+      "read_first": "Repeated broadcasts"
+    },
+    {
+      "t": 4,
+      "dominant": "One original panel stops",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "musical vacuum",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 4.5,
+      "dominant": "Cyan trace identifies shared origin",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "musical vacuum",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 5,
+      "dominant": "Trace connects neighbouring panels",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "musical vacuum",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 5.5,
+      "dominant": "Propagation at 5.5 draws them together",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "low synchronized impact",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 6,
+      "dominant": "Depth starts collapsing into order",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "low synchronized impact",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 6.5,
+      "dominant": "Connected panels ease into one reference",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "low synchronized impact",
+      "effects": [
+        "connection",
+        "alignment",
+        "camera_motion"
+      ],
+      "read_first": "Connected work"
+    },
+    {
+      "t": 7,
+      "dominant": "Camera follows trace into the pipeline",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 7.5,
+      "dominant": "Source-data module docks",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 8,
+      "dominant": "Media module joins the same axis",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 8.5,
+      "dominant": "Program module aligns with outputs",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 9,
+      "dominant": "Broadcast action connects downstream",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 9.5,
+      "dominant": "Cyan confirmation travels forward",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 10,
+      "dominant": "Labels clarify the reusable structure",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 10.5,
+      "dominant": "Entire connected chain locks into place",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "pitched module confirmations",
+      "effects": [
+        "module_lock",
+        "rim_sweep",
+        "camera_motion"
+      ],
+      "read_first": "One workflow"
+    },
+    {
+      "t": 11,
+      "dominant": "Camera arcs toward the fixed structure",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 11.5,
+      "dominant": "Names and dates change inside same cells",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 12,
+      "dominant": "Populate reveals behind first module",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 12.5,
+      "dominant": "Content variants travel in one direction",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 13,
+      "dominant": "Automate reveals as signal advances",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 13.5,
+      "dominant": "Operations light up in sequence",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 14,
+      "dominant": "Existing modules remain stationary",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 14.5,
+      "dominant": "Last node passes output downstream",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "drums, synth, rising strings",
+      "effects": [
+        "data_refresh",
+        "module_lock",
+        "camera_motion"
+      ],
+      "read_first": "New content, same workflow"
+    },
+    {
+      "t": 15,
+      "dominant": "Output panel resolves with decisive impact",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "broadcast signature",
+      "effects": [
+        "output_focus",
+        "camera_motion"
+      ],
+      "read_first": "Broadcast output"
+    },
+    {
+      "t": 15.5,
+      "dominant": "Camera passes the final activation",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "broadcast signature",
+      "effects": [
+        "output_focus",
+        "camera_motion"
+      ],
+      "read_first": "Broadcast output"
+    },
+    {
+      "t": 16,
+      "dominant": "Program-output frame stabilizes",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "broadcast signature",
+      "effects": [
+        "output_focus",
+        "camera_motion"
+      ],
+      "read_first": "Broadcast output"
+    },
+    {
+      "t": 16.5,
+      "dominant": "Connected workflow recedes to context",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "broadcast signature",
+      "effects": [
+        "output_focus",
+        "camera_motion"
+      ],
+      "read_first": "Broadcast output"
+    },
+    {
+      "t": 17,
+      "dominant": "Camera finishes its final deceleration",
+      "supporting": "Camera reinforces workflow direction",
+      "ambient": "navy fog and low-contrast spatial reference",
+      "audio": "broadcast signature",
+      "effects": [
+        "output_focus",
+        "camera_motion"
+      ],
+      "read_first": "Broadcast output"
+    },
+    {
+      "t": 17.5,
+      "dominant": "AIR STACK identity takes focus",
+      "supporting": null,
+      "ambient": "fine surface illumination",
+      "audio": "resolving chord with natural decay",
+      "effects": [
+        "brand_reveal",
+        "hold"
+      ],
+      "read_first": "AIR STACK"
+    },
+    {
+      "t": 18,
+      "dominant": "Subtitle and signature rule settle",
+      "supporting": null,
+      "ambient": "fine surface illumination",
+      "audio": "resolving chord with natural decay",
+      "effects": [
+        "brand_reveal",
+        "hold"
+      ],
+      "read_first": "AIR STACK"
+    },
+    {
+      "t": 18.5,
+      "dominant": "One restrained cyan specular sweep",
+      "supporting": null,
+      "ambient": "fine surface illumination",
+      "audio": "resolving chord with natural decay",
+      "effects": [
+        "brand_reveal",
+        "hold"
+      ],
+      "read_first": "AIR STACK"
+    },
+    {
+      "t": 19,
+      "dominant": "Brand stays perfectly still",
+      "supporting": null,
+      "ambient": "fine surface illumination",
+      "audio": "resolving chord with natural decay",
+      "effects": [
+        "brand_reveal",
+        "hold"
+      ],
+      "read_first": "AIR STACK"
+    },
+    {
+      "t": 19.5,
+      "dominant": "End-card rests as final note decays",
+      "supporting": null,
+      "ambient": "fine surface illumination",
+      "audio": "resolving chord with natural decay",
+      "effects": [
+        "brand_reveal",
+        "hold"
+      ],
+      "read_first": "AIR STACK"
+    }
+  ],
+  "events": [
+    {
+      "id": "cam_dolly",
+      "t": 0.05,
+      "kind": "camera",
+      "visual": "Withdraw from initial schedule into repeated production depth",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "dolly",
+        "end": 2,
+        "ease": "cubic_in_out",
+        "rank": 1,
+        "meaning": "Withdraw from initial schedule into repeated production depth",
+        "shot": "repetition_a",
+        "from": [
+          0,
+          0,
+          3200
+        ],
+        "to": [
+          0,
+          0,
+          2900
+        ]
+      }
+    },
+    {
+      "id": "headline",
+      "t": 0.5,
+      "kind": "text",
+      "visual": "Spatial type EVERY BROADCAST enters on the schedule plane",
+      "sync": "visual_only"
+    },
+    {
+      "id": "cam_track",
+      "t": 2,
+      "kind": "camera",
+      "visual": "Lateral tracking reveals separate preparation systems",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "dolly",
+        "end": 4,
+        "ease": "cubic_in_out",
+        "rank": 2,
+        "meaning": "Lateral tracking reveals separate preparation systems",
+        "shot": "repetition_b",
+        "from": [
+          0,
+          0,
+          2900
+        ],
+        "to": [
+          -380,
+          0,
+          2900
+        ]
+      }
+    },
+    {
+      "id": "repeat_build",
+      "t": 2.5,
+      "kind": "accent",
+      "visual": "Extra repeated schedule layers emerge",
+      "audio": "tick",
+      "sync": "required",
+      "gain": 0.05
+    },
+    {
+      "id": "cam_push",
+      "t": 4.02,
+      "kind": "camera",
+      "visual": "Camera returns to the stopped original as connection travels",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "dolly",
+        "end": 6.95,
+        "ease": "cubic_in_out",
+        "rank": 3,
+        "meaning": "Camera returns to the stopped original as connection travels",
+        "shot": "connection",
+        "from": [
+          -380,
+          0,
+          2900
+        ],
+        "to": [
+          -100,
+          0,
+          2500
+        ]
+      }
+    },
+    {
+      "id": "one_panel",
+      "t": 4.4,
+      "kind": "reveal",
+      "visual": "One schedule panel stops and emits a single cyan trace",
+      "sync": "visual_only"
+    },
+    {
+      "id": "snap",
+      "t": 5.5,
+      "kind": "impact",
+      "style": "cut_flash",
+      "visual": "Connection propagates; scattered panels align in reusable relation",
+      "audio": "impact",
+      "gain": 0.8,
+      "rank": 3,
+      "sync": "required",
+      "anticipation": "Every click cuts out before the connection reaches the origin",
+      "move3d": {
+        "type": "snap_align",
+        "ease": "expo_out",
+        "rank": 7,
+        "meaning": "depth collapses toward a coherent reusable workflow"
+      }
+    },
+    {
+      "id": "question",
+      "t": 6.1,
+      "kind": "text",
+      "visual": "WHAT IF YOU BUILT IT ONCE reveals from spatial occlusion",
+      "sync": "visual_only"
+    },
+    {
+      "id": "cam_flow",
+      "t": 7,
+      "kind": "camera",
+      "visual": "Dolly along the connected chain as each workflow module docks",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "dolly",
+        "end": 10.95,
+        "ease": "cubic_in_out",
+        "rank": 4,
+        "meaning": "Dolly along the connected chain as each workflow module docks",
+        "shot": "structure",
+        "from": [
+          -100,
+          0,
+          2500
+        ],
+        "to": [
+          180,
+          0,
+          2250
+        ]
+      }
+    },
+    {
+      "id": "build_title",
+      "t": 7.15,
+      "kind": "text",
+      "visual": "BUILD ONCE becomes readable while modules physically assemble",
+      "sync": "visual_only"
+    },
+    {
+      "id": "rim_sweep",
+      "t": 8,
+      "kind": "accent",
+      "visual": "One cyan sweep travels along the aligned workflow",
+      "audio": "tick",
+      "gain": 0.06,
+      "sync": "required",
+      "duration": 0.7,
+      "move3d": {
+        "type": "light_sweep",
+        "ease": "cubic_in_out",
+        "rank": 8,
+        "meaning": "activation follows actual links"
+      }
+    },
+    {
+      "id": "workflow_lock",
+      "t": 9.5,
+      "kind": "accent",
+      "visual": "Final reusable output node locks into the chain",
+      "audio": "tick",
+      "gain": 0.06,
+      "sync": "required"
+    },
+    {
+      "id": "cam_arc",
+      "t": 11,
+      "kind": "camera",
+      "visual": "Smooth 16-degree camera arc reveals refreshed data inside unchanged modules",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "orbit",
+        "end": 14.95,
+        "ease": "cubic_in_out",
+        "rank": 5,
+        "meaning": "Smooth 16-degree camera arc reveals refreshed data inside unchanged modules",
+        "shot": "automation",
+        "from": null,
+        "to": null,
+        "degrees": 16
+      }
+    },
+    {
+      "id": "refresh",
+      "t": 11.3,
+      "kind": "reveal",
+      "visual": "Updated dates, names, program fields replace old values in place",
+      "sync": "visual_only"
+    },
+    {
+      "id": "populate",
+      "t": 11.75,
+      "kind": "text",
+      "visual": "POPULATE unmasked by first moving content cell",
+      "sync": "visual_only"
+    },
+    {
+      "id": "automate",
+      "t": 13.25,
+      "kind": "text",
+      "visual": "AUTOMATE exposed behind cascading module activations",
+      "sync": "visual_only"
+    },
+    {
+      "id": "cam_output",
+      "t": 15,
+      "kind": "camera",
+      "visual": "Travel through the final workflow step to broadcasting output",
+      "audio": "whoosh",
+      "gain": 0.012,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "dolly",
+        "end": 17.4,
+        "ease": "cubic_in_out",
+        "rank": 6,
+        "meaning": "Travel through the final workflow step to broadcasting output",
+        "shot": "broadcast",
+        "from": [
+          700,
+          0,
+          2200
+        ],
+        "to": [
+          0,
+          0,
+          1900
+        ]
+      }
+    },
+    {
+      "id": "broadcast",
+      "t": 15,
+      "kind": "impact",
+      "style": "cut_flash",
+      "visual": "Production output becomes one stable authoritative screen",
+      "audio": "impact",
+      "rank": 2,
+      "gain": 0.9,
+      "sync": "required",
+      "anticipation": "Sequential automation lights converge on final output"
+    },
+    {
+      "id": "recede",
+      "t": 17.25,
+      "kind": "transition",
+      "style": "zoom_out",
+      "visual": "Dim the connected broadcast system behind the brand wordmark",
+      "audio": "whoosh",
+      "audio_offset": -0.14,
+      "gain": 0.12,
+      "sync": "required",
+      "duration": 0.25,
+      "move3d": {
+        "type": "recede",
+        "ease": "expo_in",
+        "rank": 9,
+        "meaning": "system moves aside after completing its job"
+      }
+    },
+    {
+      "id": "title",
+      "t": 17.5,
+      "kind": "impact",
+      "style": "zoom",
+      "visual": "AIR STACK hero mark resolves on a completely stopped camera",
+      "audio": "impact",
+      "gain": 1,
+      "rank": 1,
+      "sync": "required",
+      "anticipation": "Output composition settles and space goes quiet before mark"
+    },
+    {
+      "id": "title_text",
+      "t": 17.58,
+      "kind": "reveal",
+      "visual": "Full final tagline and BKE supporting line become legible",
+      "sync": "visual_only"
+    },
+    {
+      "id": "brand_shine",
+      "t": 18.5,
+      "kind": "accent",
+      "visual": "Restrained cyan highlight passes across already-still AIR STACK typography",
+      "audio": "tick",
+      "gain": 0.04,
+      "sync": "required"
+    }
+  ],
+  "quiet": [
+    {
+      "start": 4.85,
+      "end": 5.38,
+      "reason": "Negative space before the intelligent connection propagates"
+    },
+    {
+      "start": 18.9,
+      "end": 20,
+      "reason": "Locked final wordmark and tagline; no camera or element drift"
+    }
+  ],
+  "audio_bed": [
+    "kick",
+    "hat",
+    "clap",
+    "pad",
+    "pluck",
+    "bass",
+    "chord",
+    "riser_bed"
+  ],
+  "motion_qa": {
+    "style": "kinetic"
+  }
+}
