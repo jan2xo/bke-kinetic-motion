@@ -111,7 +111,14 @@
   },
   "music": {
     "groove_from": 7,
-    "hats_from": 9
+    "hats_from": 9,
+    "vacuum": [
+      [
+        4.86,
+        5.43
+      ]
+    ],
+    "strings_from": 10.5
   },
   "scenes": [
     {
@@ -1037,7 +1044,8 @@
     "pluck",
     "bass",
     "chord",
-    "riser_bed"
+    "riser_bed",
+    "strings"
   ],
   "motion_qa": {
     "style": "kinetic"
